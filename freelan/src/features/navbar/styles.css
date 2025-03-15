@@ -1,0 +1,26 @@
+/* styles.css */
+
+.swiper-container {
+    padding: 10px; /* Optional: add some padding around the Swiper */
+  }
+  
+  .swiper-slide {
+    transition: transform 0.3s ease; /* Smooth scaling effect */
+  }
+  
+  .swiper-slide:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  @media (max-width: 640px) {
+    .swiper-slide {
+      padding: 10px; /* Adjust padding for small screens */
+    }
+  }
+  
+  @media (min-width: 640px) {
+    .swiper-slide {
+      padding: 20px; /* More padding for larger screens */
+    }
+  }
+  
