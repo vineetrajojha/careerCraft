@@ -7,9 +7,6 @@ module.exports = {
     fontFamily: {
       roboto: ['Roboto', 'sans'],
       'sans': ['Helvetica', 'Arial', 'sans-serif'],
-
-  // Comma-delimited format:
-  'sans': 'Helvetica, Arial, sans-serif',
       'serif': ['ui-serif', 'Georgia'],
       'mono': ['ui-monospace', 'SFMono-Regular'],
       'outfit': ['Outfit', 'sans-serif'],
@@ -31,6 +28,10 @@ module.exports = {
             transform: 'translateY(0)'
           },
         },
+        'scroll': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-100% / 3))' }
+        },
         'fade-in': {
           '0%': {
             opacity: '0',
@@ -43,11 +44,14 @@ module.exports = {
         }
       },
       animation: {
+        'scroll': 'scroll 30s linear infinite',
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-in': 'fade-in 0.7s ease-out forwards',
       }
     },
   },
-  plugins: [require('@tailwindcss/aspect-ratio'),require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms')
+  ],
 }
-
