@@ -4,30 +4,31 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FaShoppingCart } from 'react-icons/fa';
 
+
 const ProductSection = () => {
   const [expanded, setExpanded] = useState(null);
 
   const products = [
     {
       id: 1,
-      image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
+      image: "https://i.postimg.cc/KkYCbJ3y/PHOTO-2025-03-16-16-00-24.jpg",
       title: "Trial Product",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
-      tag: "ATTEND TRIAL WORKSHOP"
+      // tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 2,
-      image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
+      image: "https://i.postimg.cc/RFTr3nRH/r.jpg",
       title: "Trial Product",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
-      tag: "ATTEND TRIAL WORKSHOP"
+      // tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 3,
       image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
       title: "Trial Product",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
-      tag: "ATTEND TRIAL WORKSHOP"
+      // tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 4,
@@ -78,20 +79,20 @@ const ProductSection = () => {
               {/* Product Card Content */}
               <div className="flex flex-col h-full">
                 {/* Image Container */}
-                <div className="relative bg-[#F4A460] rounded-2xl p-4 mb-6">
+                
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-32 h-32 object-cover rounded-xl"
+                    className="w-100% h-auto object-fit rounded-xl"
                   />
                   <div className="absolute top-4 right-4 text-white font-medium text-sm">
                     {product.tag}
                   </div>
                   <div className="absolute bottom-4 right-4 w-12 h-1 bg-yellow-300 rounded-full"></div>
-                </div>
+                
 
                 {/* Product Info */}
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl mt-4 font-bold text-white mb-4">
                   {product.title}
                 </h3>
                 <p className="text-white mb-6 flex-grow">
