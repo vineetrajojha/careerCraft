@@ -1,10 +1,10 @@
 import React, { useState,useRef} from 'react';
 import { Link,NavLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper components
-import { Navigation } from 'swiper/modules'; // Import Navigation module
+import { Navigation, Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
 import 'swiper/css/bundle'; // Import Swiper styles
 import './styles.css'; // Import the CSS file for custom animations
-
+import { FaShoppingCart, FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
 
 import ProductSection from './ProductSection';
 import FaqSection from './FaqSection';
@@ -12,49 +12,53 @@ import MentorsSection from './MentorsSection';
 import Footer from '../features/common/Footer';
 import newLogo from "../features/common/images/newLogo.png"
 
+// Add CountUp component for animations
+import CountUp from 'react-countup';
 
-const features = [
+// Extract FAQ data from features array
+const faqData = [
   {
-    title: "Expert Instructors",
-    description: `Our instructors, with rich industry experience, bring real-world insights into the learning process.
-     They simplify complex concepts through engaging, interactive methods, ensuring clarity and understanding. 
-     Passionate about staying up-to-date with industry developments, they offer guidance and constructive feedback to create a 
-     supportive learning environment. This fosters continuous growth and positions you for long-term career success.`
+    question: "Who can join us?",
+    answer: "Anyone passionate about learning and career growth can join Career Craft. Our courses are designed for students, professionals, and career changers looking to enhance their skills."
   },
   {
-    title: "Flexible Learning",
-    description: `We provide a range of flexible learning options to suit different preferences and schedules, from self-paced courses
-      to more structured formats. Our offerings include online courses for anytime, anywhere access, blended learning
-      experiences, and immersive workshops, all designed to equip learners with practical, real-world skills for success in a
-      competitive global environment.`
+    question: "What courses do you offer?",
+    answer: "We offer a wide range of courses in technology, business, design, and professional development. Our curriculum is regularly updated to match industry demands."
   },
   {
-    title: "Comprehensive Curriculum",
-    description: "Our comprehensive curriculum, crafted by experts in collaboration with industry professionals, balances theory and practical application, emphasizing hands-on learning, case studies, and real-world projects. Continuously updated to reflect current trends and best practices, it equips learners with valuable insights and practical knowledge for immediate career application, ensuring success in today’s competitive landscape."
+    question: "How does the learning process work?",
+    answer: "Our learning process combines self-paced online modules, live sessions with instructors, hands-on projects, and interactive assignments to ensure comprehensive skill development."
   },
   {
-    title: "Career Support",
-    description: `Designed by experts in collaboration with industry professionals, our curriculum offers a balanced blend of theory
-    and practical application. It focuses on hands-on learning, case studies, and real-world projects, ensuring learners
-      gain relevant skills. Regularly updated to stay aligned with current trends and best practices, it equips learners with
-    actionable insights and practical knowledge, empowering them to thrive in today’s competitive landscape.`
+    question: "What support do you provide?",
+    answer: "We provide 24/7 technical support, dedicated mentorship, career guidance, and placement assistance to help you achieve your career goals."
+  },
+  {
+    question: "Are there any prerequisites?",
+    answer: "Prerequisites vary by course. While some courses are beginner-friendly, others may require basic knowledge in relevant areas. Check specific course details for requirements."
+  },
+  {
+    question: "What is your refund policy?",
+    answer: "We offer a 7-day money-back guarantee if you're not satisfied with the course. Terms and conditions apply."
   }
 ];
 
 const testimonials = [
-  { name: "Vaishali Sharma", text: "The content on CareerCraft is up-to-date and presented in a clear, engaging manner. The support team is incredibly helpful. This platform is a fantastic tool for anyone looking to advance their skills.", image: "/vaishali.jpg" },
-  { name: "Ragini Malhotra", text: "The courses at CareerCraft are thorough and well-designed. I appreciate the real-world examples and hands-on projects that enhance learning. It’s a fantastic investment for anyone looking to improve their skills.", image: "/ragini.jpg" },
-  { name: "Kamal Mehra", text: "CareerCraft offers top-notch courses with practical exercises that are directly applicable to my job. It’s helped me build new skills efficiently and effectively. Excellent resource for career advancement!", image: "/kamal.jpg" },
-  { name: "Himanshi Singh", text: "The range of topics covered by CareerCraft is impressive, from technical skills to soft skills. The interactive elements keep me engaged, and the feedback is constructive.", image: "/himanshi.jpg" },
-  { name: "Istekhar Alam", text: "My expectations were exceeded by CareerCraft. Learning is enjoyable since the courses are well-structured and include real-world applications. Additionally, the support staff responds quickly. A must-try for individuals who are committed to improving their skills!", image: "/istekhar.jpg" },
-  { name: "Ajay Pawaria", text: "The variety of courses and hands-on approach at CareerCraft set it apart. It’s intuitive, effective, and helps me stay competitive in my field. The investment in my career has been worthwhile.", image: "/ajay.jpg" },
-  { name: "Saurav Kumar", text: "After a month of use, CareerCraft has really changed my life. Their hands-on activities and interactive sessions make upskilling a breeze. Strongly advised for anyone trying to grow in their field!", image: "/sourav.jpg" }
+  { name: "Vaishali Sharma", text: "The content on CareerCraft is up-to-date and presented in a clear, engaging manner. The support team is incredibly helpful. This platform is a fantastic tool for anyone looking to advance their skills.", image: "/vaishali.jpg" },
+  { name: "Ragini Malhotra", text: "The courses at CareerCraft are thorough and well-designed. I appreciate the real-world examples and hands-on projects that enhance learning. It's a fantastic investment for anyone looking to improve their skills.", image: "/ragini.jpg" },
+  { name: "Kamal Mehra", text: "CareerCraft offers top-notch courses with practical exercises that are directly applicable to my job. It's helped me build new skills efficiently and effectively. Excellent resource for career advancement!", image: "/kamal.jpg" },
+  { name: "Himanshi Singh", text: "The range of topics covered by CareerCraft is impressive, from technical skills to soft skills. The interactive elements keep me engaged, and the feedback is constructive.", image: "/himanshi.jpg" },
+  { name: "Istekhar Alam", text: "My expectations were exceeded by CareerCraft. Learning is enjoyable since the courses are well-structured and include real-world applications. Additionally, the support staff responds quickly. A must-try for individuals who are committed to improving their skills!", image: "/istekhar.jpg" },
+  { name: "Ajay Pawaria", text: "The variety of courses and hands-on approach at CareerCraft set it apart. It's intuitive, effective, and helps me stay competitive in my field. The investment in my career has been worthwhile.", image: "/ajay.jpg" },
+  { name: "Saurav Kumar", text: "After a month of use, CareerCraft has really changed my life. Their hands-on activities and interactive sessions make upskilling a breeze. Strongly advised for anyone trying to grow in their field!", image: "/sourav.jpg" }
 ];
 
 
 const Main = () => {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -78,6 +82,10 @@ const Main = () => {
     targetSectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
   return (
     <div className="main-content">
       {/* 3D Cube and Particles */}
@@ -97,176 +105,381 @@ const Main = () => {
 
       <div className="content" ref={topRef}>
         {/* Navbar */}
-        <nav className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 shadow-lg text-white p-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
+        <nav className="bg-white shadow-sm p-4 mx-auto w-full font-outfit">
           <div className="container mx-auto flex justify-between items-center">
-          
-            <div className="flex items-center space-x-2">
-            <Link to = "/">
-              <img src= {newLogo} className='h-8 w-12  border-gray-800 cursor-pointer' alt="Logo" /></Link>
-              <Link to="/" className="text-3xl font-semibold font-serif">Career <span className='text-yellow-300 '>Craft</span> </Link>
+            {/* Logo Section */}
+            <div className="flex items-center">
+              <div className="-ml-6 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
+                <Link to="/">
+                  <div className="flex items-center">
+                    <img src="/carrercraftlogo.png" className="h-6 mr-2" alt="Career Craft Icon" />
+                  </div>
+                </Link>
+              </div>
             </div>
-            <div className="hidden md:flex space-x-11 text-[16px] font-semibold mr-24">
             
-            <NavLink
-                to="/about"
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center -mr-4">
+              <div className="bg-[#F8E5D8] rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
+                <NavLink
+                  to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif  "
-                      : "  hover:underline text-yellow-300 font-serif hover:text-yellow-500 "
+                      ? "text-black font-medium px-8 py-2 font-outfit"
+                      : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
                   }
-                > 
-                  About
+                >
+                  Home
                 </NavLink>
                 <NavLink
-                to="/mentors"
+                  to="/about"
                   className={({ isActive }) =>
                     isActive
-                      ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif  "
-                      : "  hover:underline text-yellow-300 font-serif hover:text-yellow-500 "
+                      ? "text-black font-medium px-8 py-2 font-outfit"
+                      : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
                   }
-                > 
-                 Our Mentors
+                >
+                  About Us
                 </NavLink>
-
-              <NavLink to="/contact"className={({ isActive }) =>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
                     isActive
-                      ? "text-white font-semibold  border-red-600 underline decoration-2 decoration-blue-600  font-serif "
-                      : "  hover:underline text-yellow-300 font-serif hover:text-yellow-500 "
+                      ? "text-black font-medium px-8 py-2 font-outfit"
+                      : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
                   }
-                >Contact Us</NavLink>
-                <p onClick={scrollToFaqSection}
-               
-                  className=
-                    
-                      " cursor-pointer hover:underline text-yellow-300 font-serif hover:text-yellow-500 "
-                  
-                > 
+                >
+                  Contact Us
+                </NavLink>
+                <p
+                  onClick={scrollToFaqSection}
+                  className="text-black hover:text-gray-700 px-8 py-2 cursor-pointer font-outfit"
+                >
                   FAQs
                 </p>
-              <NavLink to="/login" className={({ isActive }) =>
-                    isActive
-                      ? "text-black hover:text-blue-500 font-semibold underline decoration-2 font-serif decoration-red-600 bg-white px-3 rounded-lg "
-                      : "  font-serif font-semibold text-black rounded  hover:text-blue-500 border px-3  bg-slate-100 "
-                  }>Login</NavLink>
+                <Link
+                  to="/campus"
+                  className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit"
+                >
+                  Career Craft Campus
+                </Link>
+                {isLoggedIn && (
+  <Link
+    to="/cart"
+    className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
+  >
+    <FaShoppingCart className="text-2xl" />
+  </Link>
+)}
+              </div>
             </div>
+
             <div className="md:hidden">
-              <button onClick={toggleMenu} className="focus:outline-none">
+              <button onClick={toggleMenu} className="focus:outline-none text-black">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
               </button>
             </div>
           </div>
+          
           {isMenuOpen && (
-            <div className="md:hidden mt-4 space-y-2 mx-auto text-right flex flex-col">
-              <Link to="/about" className=" text-right px-3 py-1 hover:underline  rounded text-white font-serif hover:text-yellow-500 underline  ">About</Link>
-              <Link to="/mentors" className="text-right px-3 py-1 hover:underline  text-white font-serif hover:text-yellow-500 underline  ">Our Mentors</Link>
-              <Link to="/contact" className="text-right px-3 py-1 hover:underline  text-white font-serif hover:text-yellow-500 underline ">Contact Us</Link>
-              <p onClick={scrollToFaqSection}className="cursor-pointer px-3 py-1 text-right hover:underline underline  text-white font-serif hover:text-yellow-500 " 
-             > FAQs
-             </p>
-              <Link to="/login" className="text-right hover:underline px-3 py-1  text-white font-serif hover:text-yellow-500 underline  ">Login</Link>
-             
+            <div className="md:hidden mt-4 space-y-2 flex flex-col bg-[#F8E5D8] rounded-lg p-4 font-outfit">
+              <Link to="/" className="text-black px-3 py-1 hover:text-gray-700">Home</Link>
+              <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
+              <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
+              <p onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer">FAQs</p>
+              <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
             </div>
           )}
         </nav>
 
         {/* Header */}
-        <header className="bg-slate-50 text-black">
-          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
-            <div className="text-center lg:text-left mb-6 lg:mb-0">
-              <h1 className="text-5xl  font-bold font-mono mb-4">Welcome to Career <span className='text-yellow-600'>Craft</span></h1>
-              <p className="md:text-xl  font-serif  text-slate-700">We're revolutionizing <span className='font-bold text-slate-500'>education</span>  through skill development to lead the New India.</p>
-              <p className="md:text-xl mb-6 font-serif font-semibold  text-blue-700">Crafting succesful careers.</p>
-              <button onClick={scrollToSection} className='btn-glow-bounce bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800
-               transition duration-300 animate-bounce motion-safe:animate-bounce'>Check Our Products <span className='font-semibold'>&#x27F6;</span></button>
-
-
-
-              
+        <header className="bg-white text-black">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+            <div className="lg:w-1/2 text-left mb-6 lg:mb-0">
+              <h2 className="text-[#4A4A4A] text-lg mb-2 font-outfit  font-bold">Join</h2>
+              <h1 className="text-5xl mb-6 font-outfit">
+                <span className="text-[#4A3F35] font-bold">Career</span>{" "}
+                <span className="text-[#9C4A1A] font-bold">Craft</span>
+              </h1>
+              <p className="text-[#4A4A4A] text-xl leading-relaxed max-w-xl font-outfit">
+                Take charge of your future! We empower you with cutting-edge skills to innovate, succeed, and lead New India forward.
+              </p>
             </div>
-            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-10 px-14  rounded-lg ">
+            <div className="lg:w-1/2 flex flex-col items-center">
               <img 
                 src="/carrercraftlogo.png" 
-                alt="Career" 
-                className="lg:w-96 w-auto lg:h-48 object-cover rounded border-0 mx-auto"  
-                style={{ border: 'none' }} 
+                alt="Career Craft Logo" 
+                className="w-96 h-auto mb-8"
               />
+              <Link 
+                to="/login"
+                className="bg-[#E67E22] text-white px-12 py-2 rounded-full text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
+              >
+                Login
+              </Link>
             </div>
           </div>
         </header>
 
         {/* Features */}
-        <section className="text-center p-10 bg-gray-800 py-20 text-white">
-          <h2 className="md:text-5xl text-3xl font-bold mb-6 font-mono">Why Choose Career <span className='text-yellow-300 font-serif'>Craft</span> ?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 p-6 rounded-lg shadow-md transform transition duration-300 hover:scale-105">
-                <h3 className="text-2xl font-bold mb-4 text-blue-300">{feature.title}</h3>
-                <p className="text-lg md:text-base leading-relaxed text-left md:text-justify text-gray-300">{feature.description}</p>
+        <section className="font-outfit text-center p-10 bg-[#E6A06C] py-20">
+          <h2 className="md:text-5xl text-4xl font-bold mb-16">
+            <span className="text-[#4A3F35]">why choose </span>
+            <span className="text-[#4A3F35]">Career </span>
+            <span className="text-[#9C4A1A]">Craft</span>
+            <span className="text-[#4A3F35]">?</span>
+          </h2>
+
+          {/* Statistics */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-bold text-[#4A3F35] mb-2">
+                <CountUp end={100} suffix="+" duration={2.5} />
               </div>
-            ))}
+              <div className="text-2xl text-[#4A3F35]">Happy Clients</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-bold text-[#4A3F35] mb-2">
+                <CountUp end={250} suffix="+" duration={2.5} />
+              </div>
+              <div className="text-2xl text-[#4A3F35]">Courses Sold</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="text-5xl font-bold text-[#4A3F35] mb-2">
+                <CountUp end={100} suffix="+" duration={2.5} />
+              </div>
+              <div className="text-2xl text-[#4A3F35]">Active Students</div>
+            </div>
+          </div>
+
+          
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+            {/* Left Column */}
+            <div className="space-y-16">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FaBrain className="text-4xl text-[#4A3F35]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Flexible Learning</h3>
+                  <p className="text-[#4A3F35]">
+                    We offer flexible learning options, including self-paced courses, structured formats, online access, and blended learning.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FaHeadset className="text-4xl text-[#4A3F35]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Career Support</h3>
+                  <p className="text-[#4A3F35]">
+                    Get personalized career guidance, mentorship, and job placement assistance to help you achieve your professional goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-16">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FaUserTie className="text-4xl text-[#4A3F35]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Expert Instructors</h3>
+                  <p className="text-[#4A3F35]">
+                    Our experienced instructors simplify complex concepts with real-world insights and interactive methods.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FaGraduationCap className="text-4xl text-[#4A3F35]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Comprehensive Curriculum</h3>
+                  <p className="text-[#4A3F35]">
+                    Our expert-designed curriculum blends theory with hands-on learning, case studies, and real-world projects.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            
           </div>
         </section>
 
-       <div>
-        <MentorsSection />
-       </div>
+       
+
+
       
         <div ref={targetSectionRef} className="flex flex-wrap gap-6 justify-center items-center min-h-screen bg-stone-100">
-        <ProductSection />
-     
-    </div>
-        
-       {/* Testimonials */}
-<section className="text-center p-10 bg-gray-700 py-20 text-white">
-  <h2 className="text-4xl font-bold mb-6 font-roboto">What Our<span className='text-yellow-300'>  Students</span> Say</h2>
-  <Swiper
-    modules={[Navigation]}
-    navigation
-    spaceBetween={20} // Adjust space between slides
-    slidesPerView={1} // Default to 1 slide for smaller screens
-    breakpoints={{
-      640: {
-        slidesPerView: 1, // 1 slide for small screens
-      },
-      768: {
-        slidesPerView: 2, // 2 slides for medium screens
-        spaceBetween: 30, // Space between slides
-      },
-      1024: {
-        slidesPerView: 3, // 3 slides for larger screens
-        spaceBetween: 30, // Space between slides
-      },
-    }}
-  >
-    {testimonials.map((testimonial, index) => (
-      <SwiperSlide key={index} className="bg-white p-6 rounded-lg shadow-md">
-        <img src={testimonial.image} alt={testimonial.name} className="h-52 w-40 mx-auto mb-4 object-cover" />
-        <p className="text-lg italic text-gray-700 mb-4">"{testimonial.text}"</p>
-        <p className="text-lg font-semibold text-gray-900">{testimonial.name}</p>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-</section>
-<div ref={targetFaqSection}>
-  <FaqSection />
-  <div className="text-center mt-4 mb-2">
-            <button
-              onClick={scrollToTop}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none  "
-            >
-              Go to Top
-            </button>
-          </div>
-</div>
+          {ProductSection && <ProductSection />}
+        </div>
 
-        {/* Login Section */}
-        <section className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 text-white text-center p-10">
-          <h2 className="text-3xl font-bold mb-4">Ready to Upskill Yourself?</h2>
-          <p className="text-xl mb-6">Join Career Craft today and take the best step towards your future.</p>
-          <Link to="/login" className="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition duration-300">Sign Up Now</Link>
+        <div>
+          {MentorsSection && <MentorsSection />}
+        </div>
+
+        
+        
+        {/* Testimonials */}
+        <section className="bg-white py-20 font-outfit overflow-hidden">
+          <div className="container mx-auto px-4">
+            <h2 className="text-center mb-16 text-5xl font-bold">
+              <span className="text-[#4A3F35]">What Our </span>
+              <span className="text-[#9C4A1A]">Students </span>
+              <span className="text-[#4A3F35]">Say</span>
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {/* First Column */}
+              <div className="space-y-8">
+                <Swiper
+                  direction="vertical"
+                  modules={[Autoplay]}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    reverseDirection: false
+                  }}
+                  loop={true}
+                  speed={1000}
+                  slidesPerView={2}
+                  spaceBetween={24}
+                  className="h-[700px]"
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <SwiperSlide key={`col1-${index}`}>
+                      <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
+                        <div className="flex flex-col items-center">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="w-16 h-16 rounded-full mb-4 object-cover"
+                          />
+                          <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+                          <p className="text-white text-sm mb-4">{testimonial.text}</p>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
+              {/* Second Column */}
+              <div className="space-y-8">
+                <Swiper
+                  direction="vertical"
+                  modules={[Autoplay]}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    reverseDirection: true,
+                    initialSlide: 2
+                  }}
+                  loop={true}
+                  speed={1000}
+                  slidesPerView={2}
+                  spaceBetween={24}
+                  className="h-[700px]"
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <SwiperSlide key={`col2-${index}`}>
+                      <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
+                        <div className="flex flex-col items-center">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="w-16 h-16 rounded-full mb-4 object-cover"
+                          />
+                          <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+                          <p className="text-white text-sm mb-4">{testimonial.text}</p>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
+              {/* Third Column */}
+              <div className="space-y-8">
+                <Swiper
+                  direction="vertical"
+                  modules={[Autoplay]}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    reverseDirection: false,
+                    initialSlide: 4
+                  }}
+                  loop={true}
+                  speed={1000}
+                  slidesPerView={2}
+                  spaceBetween={24}
+                  className="h-[700px]"
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <SwiperSlide key={`col3-${index}`}>
+                      <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
+                        <div className="flex flex-col items-center">
+                          <img
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="w-16 h-16 rounded-full mb-4 object-cover"
+                          />
+                          <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+                          <p className="text-white text-sm mb-4">{testimonial.text}</p>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          </div>
         </section>
+
+        {/* FAQ Section */}
+        <section className="bg-[#E6A06C] py-20 px-4 font-outfit">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-5xl font-bold mb-16 text-[#4A3F35] text-center">
+              Frequently Asked Questions.
+            </h2>
+            
+            <div className="space-y-4">
+              {faqData.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg overflow-hidden cursor-pointer"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <div className="p-6 flex justify-between items-center">
+                    <h3 className="text-xl font-medium text-[#4A3F35]">
+                      {faq.question}
+                    </h3>
+                    <FaChevronDown
+                      className={`text-[#4A3F35] transition-transform duration-300 ${
+                        activeIndex === index ? 'transform rotate-180' : ''
+                      }`}
+                    />
+                  </div>
+                  {activeIndex === index && (
+                    <div className="px-6 pb-6">
+                      <p className="text-[#4A3F35]">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* Footer */}
         <Footer />
