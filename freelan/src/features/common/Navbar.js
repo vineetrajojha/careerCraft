@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -2,194 +2,108 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Footer from '../features/common/Footer';
 import { useLocation } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+import about1 from '../features/common/images/about1.png';
+import about2 from '../features/common/images/about2.png';
 
-export const Navbar = () => {
+export const Navbar = ({ isLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
-  const isAbout = location.pathname === '/about';
-  const isHomeRoute = location.pathname === '/contact'
-  const isLogin = location.pathname === '/login';
-  const isSignUp = location.pathname === '/signup'
-  const isMentorsRoute = location.pathname === '/mentors';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <nav className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 shadow-lg text-white p-4 mx-auto max-w-8xl sm:px-6 lg:px-8">
+    <nav className="bg-white  p-4 mx-auto w-full font-outfit">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <img src='/newLogo.png' className='h-8 w-12  border-gray-800' alt="Logo" />
-          <Link to="/" className="text-3xl font-semibold font-serif">Career <span className='text-yellow-300'>Craft</span></Link>
+        {/* Logo Section */}
+        <div className="flex items-center">
+          <div className="-ml-6 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
+            <Link to="/">
+              <div className="flex items-center">
+                <img src="/carrercraftlogo.png" className="h-6 mr-2" alt="Career Craft Icon" />
+              </div>
+            </Link>
+          </div>
         </div>
-        <div className="hidden md:flex space-x-11 text-[16px] font-semibold mr-24">
-        {isAbout && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isHomeRoute && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isLogin && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isSignUp && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isMentorsRoute && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            Home
-          </NavLink>)}
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            About
-          </NavLink>
-          <NavLink
-                to="/mentors"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif  "
-                      : "  hover:underline text-yellow-300 font-serif hover:text-yellow-500 "
-                  }
-                > 
-                 Our Mentors
-                </NavLink>
-
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold border-red-600 underline decoration-2 decoration-blue-600 font-serif"
-                : "hover:underline text-yellow-300 font-serif hover:text-yellow-500"
-            }
-          >
-            Contact Us
-          </NavLink>
-          {/* <Link to= '/faqSection'
-               
-               className=
-                 
-                   " cursor-pointer hover:underline text-yellow-300 font-serif hover:text-yellow-500 "
-               
-             > 
-               FAQ
-             </Link> */}
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              isActive
-                ? "text-black hover:text-blue-500 font-semibold underline decoration-2 font-serif decoration-red-600 bg-white px-3 rounded-lg"
-                : "font-serif font-semibold text-black rounded hover:text-blue-500 border px-3 bg-slate-100"
-            }
-          >
-            Login
-          </NavLink>
+        
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center -mr-4">
+          <div className="bg-[#F8E5D8] rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-medium px-8 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-medium px-8 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+              }
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-medium px-8 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+              }
+            >
+              Contact Us
+            </NavLink>
+            <NavLink
+              to="/faq"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-medium px-8 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+              }
+            >
+              FAQs
+            </NavLink>
+            <Link
+              to="/campus"
+              className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit"
+            >
+              Career Craft Campus
+            </Link>
+            {isLoggedIn && (
+              <Link
+                to="/cart"
+                className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
+              >
+                <FaShoppingCart className="text-2xl" />
+              </Link>
+            )}
+          </div>
         </div>
+        
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="focus:outline-none">
+          <button onClick={toggleMenu} className="focus:outline-none text-black">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
           </button>
         </div>
       </div>
+      
       {isMenuOpen && (
-        <div className="md:hidden mt-2 space-y-2 mx-auto text-right flex flex-col">
-        {isAbout && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-white font-serif hover:text-yellow-500 px-3 py-1"
-            }
-          >
-            Home
-          </NavLink>)}
-        {isHomeRoute && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-white font-serif hover:text-yellow-500 px-3 py-1"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isLogin && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-white font-serif hover:text-yellow-500 px-3 py-1"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isSignUp && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-white font-serif hover:text-yellow-500 px-3 py-1"
-            }
-          >
-            Home
-          </NavLink>)}
-          {isMentorsRoute && (<NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "text-white font-semibold underline decoration-2 decoration-blue-600 border-red-600  font-serif"
-                : "hover:underline text-white font-serif hover:text-yellow-500 px-3 py-1"
-            }
-          >
-            Home
-          </NavLink>)}
-          <Link to="/about" className=" text-right px-3 py-1 hover:underline  rounded text-white font-serif hover:text-yellow-500 underline ">About</Link>
-          <Link to="/mentors" className=" text-right px-3 py-1 hover:underline  rounded text-white font-serif hover:text-yellow-500 underline  ">Our Mentors</Link>
-          <Link to="/contact" className=" text-right px-3 py-1 hover:underline  rounded text-white font-serif hover:text-yellow-500 underline ">Contact Us</Link>
-          <Link to="/login" className=" text-right px-3 py-1 hover:underline  rounded text-white font-serif hover:text-yellow-500 underline ">Login</Link>
+        <div className="md:hidden mt-4 space-y-2 flex flex-col bg-[#F8E5D8] rounded-lg p-4 font-outfit">
+          <Link to="/" className="text-black px-3 py-1 hover:text-gray-700">Home</Link>
+          <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
+          <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
+          <Link to="/faq" className="text-black px-3 py-1 hover:text-gray-700">FAQs</Link>
+          <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
         </div>
       )}
     </nav>
@@ -197,53 +111,80 @@ export const Navbar = () => {
 };
 
 const About = () => (
-  <div>
-   <Navbar />
-    <div className="bg-gray-50 py-16">
-      <div className="container mx-auto px-6 lg:px-8 max-w-4xl">
-        <h1 className="text-4xl hover:text-black cursor-pointer font-bold text-gray-900 text-center font-roboto mb-8 decoration-slate-500 underline">About <span className='text-blue-900 font-serif'>Us</span></h1>
-        <p className="text-xl text-gray-700 leading-8 mb-4 font-mono">
-          Welcome to <span className="font-bold">Career Craft</span>, where we're revolutionizing education through skill development to lead the New India.
-        </p>
-        <p className="md:text-lg sm:text-base text-gray-700 leading-8 mb-4 font-serif">
-        A.P.J. Abdul Kalam Once said <span className='font-semibold text-blue-800'>“All of us do not have equal talent but all of us have an equal opportunity to develop
-our talent”</span> it is this thought that lies at the very heart of what Career Craft Services does. We firmly believe, that the
-main aim of a teacher is not only to impart knowledge and Studies but also to awaken a sense of curiosity for
-independent and logical thinking.
-At Career Craft, we encourage our learners to develop a deep understanding of concepts, contextual knowledge, and
-real-world application in a stress-free and supportive environment. Our programs are thoughtfully designed and
-supported by comprehensive course material, detailed question banks, interactive discussion sessions, and rigorous
-testing schedules to ensure a thorough learning experience.
-Our institute brings together a team of accomplished and dedicated educators under one roof, creating a knowledge
-hub that fosters excellence. With their expertise, we aim to guide each student toward continuous improvement and
-career advancement.
-We offer top-notch facilities in a welcoming atmosphere where students feel at home. You&#39;ll find them engaged in
-their studies throughout the institute, driven by the desire to excel.
-Over the years, it has been incredibly rewarding to see our students grow, thrive, and benefit from our specialized
-programs and personalized guidance. Not only do they achieve remarkable success in their careers, but they also
-gain invaluable skills and insights that serve them well in their professional journeys.
-This is where our success lies—seeing our students reach their full potential and pave the way for a bright future.
-<br></br>
-<span className='font-bold '>Crafting success, one skill at a time.</span>
-        </p>
-       
-        <h1 className="text-4xl font-bold text-gray-900 text-center font-roboto mb-4 decoration-slate-500 underline">Our <span className='text-blue-900 font-serif'>Mission</span></h1>
-        <p className="md:text-lg sm:text-base text-gray-700 leading-8 mb-4 font-serif">Our mission is to educate and empower students, discipline these young minds and to help them grow into
-          intellectually aware individuals, capable of fulfilling their dreams and aspirations and to face the future with
-          equanimity.</p>
-        <p className="text-lg text-gray-900 leading-8 mb-4 font-bold">
-          Join us on this transformative journey as we unlock the potential of every learner, shaping a brighter future through education.
-        </p>
-        
+  <div className="bg-white">
+    <Navbar />
+    <div className="container mx-auto px-4 py-12 max-w-7xl">
+      {/* About Us Section */}
+      <h1 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center">About Us</h1>
+      
+      <div className="flex flex-col lg:flex-row items-center gap-8 mb-20">
+        <div className="lg:w-1/2 bg-[#F8E5D8] rounded-3xl p-8">
+          <p className="text-lg mb-6">
+            Welcome to <span className="font-semibold">Career Craft</span>—where we revolutionize
+            education through skill development for New India.
+          </p>
+          <p className="text-lg mb-6">
+            A.P.J. Abdul Kalam once said, "<span className="font-semibold">All of us do not have
+            equal talent, but all of us have an equal opportunity
+            to develop our talent.</span>" This belief drives us at
+            Career Craft. We go beyond academics, fostering
+            curiosity, independent thinking, and real-world
+            application in a supportive environment.
+          </p>
+          <p className="text-lg mb-6">
+            Our thoughtfully designed programs include
+            comprehensive course material, interactive
+            discussions, and rigorous testing to ensure a deep
+            understanding. Backed by a team of dedicated
+            educators, we create a knowledge hub that guides
+            students toward excellence.
+          </p>
+          <p className="text-lg mb-6">
+            With top-notch facilities and a welcoming
+            atmosphere, our students stay motivated, driven by
+            the desire to excel. Seeing them grow, thrive, and
+            succeed in their careers is our greatest reward.
+          </p>
+          <p className="text-lg font-semibold">
+            Crafting success, one skill at a time.
+          </p>
+        </div>
+        <div className="lg:w-1/2">
+          <img 
+            src={about1}
+            alt="Career Craft Team" 
+            className="w-[90%] h-auto rounded-lg "
+          />
+        </div>
+      </div>
+
+      {/* Our Mission Section */}
+      <h2 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center">Our Mission</h2>
+      
+      <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
+        <div className="lg:w-1/2">
+          <img 
+            src={about2}
+            alt="Career Craft Mission" 
+            className="w-[80%] h-auto rounded-lg"
+          />
+        </div>
+        <div className="lg:w-1/2 bg-[#F8E5D8] rounded-3xl p-8">
+          <p className="text-[20px] mb-6">
+            Our mission is to educate, empower, and
+            instill discipline in young minds, guiding
+            them toward intellectual growth and the
+            confidence to achieve their dreams.
+          </p>
+          <p className="text-lg font-semibold">
+            Join us on this transformative journey to
+            unlock every learner's potential and
+            shape a brighter future through
+            education.
+          </p>
+        </div>
       </div>
     </div>
-    <section className="bg-gray-800 text-white text-center p-10">
-        <h2 className="text-3xl font-semibold mb-4 font-sans">Ready to Start Your Career?</h2>
-        <p className="text-xl mb-6 font-sans">Join Career Craft today and take the best step towards your future.</p>
-        <Link to="/login" className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">Sign Up Now</Link>
-      </section>
-
-      {/* Footer */}
     <Footer />
   </div>
 );
