@@ -115,13 +115,13 @@ const Main = () => {
         <header className="bg-white text-black">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
             <div className="lg:w-1/2 text-left mb-6 lg:mb-0">
-              <h2 className="text-[#4A4A4A] text-lg mb-2 font-outfit  font-bold">Join</h2>
+              <h2 className="text-[#4A4A4A] text-lg mb-1 font-outfit font-extrabold">Join</h2>
               <h1 className="text-5xl mb-6 font-outfit">
-                <span className="text-[#4A3F35] font-bold">Career</span>{" "}
-                <span className="text-[#9C4A1A] font-bold">Craft</span>
+                <span className="text-[#4A3F35] font-extrabold">Career</span>{" "}
+                <span className="text-[#9C4A1A] font-extrabold">Craft</span>
               </h1>
               <p className="text-[#4A4A4A] text-xl leading-relaxed max-w-xl font-outfit">
-                Take charge of your future! We empower you with cutting-edge skills to innovate, succeed, and lead New India forward.
+              Take charge of your future! We empower you <br/> with cutting-edge skills to innovate, succeed, <br/> and lead New India forward.
               </p>
             </div>
             <div className="lg:w-1/2 flex flex-col items-center">
@@ -152,22 +152,22 @@ const Main = () => {
           {/* Statistics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             <div className="flex flex-col items-center">
-              <div className="text-5xl font-bold text-[#4A3F35] mb-2">
-                <CountUp end={100} suffix="+" duration={2.5} />
+              <div className="text-5xl font-bold text-[rgb(74,63,53)] mb-2">
+                <CountUp end={10000} suffix="+" duration={2.3} />
               </div>
-              <div className="text-2xl text-[#4A3F35]">Happy Clients</div>
+              <div className="text-2xl text-[#4A3F35] font-bold">Impacted Careers </div>
             </div>
             <div className="flex flex-col items-center">
               <div className="text-5xl font-bold text-[#4A3F35] mb-2">
-                <CountUp end={250} suffix="+" duration={2.5} />
+                <CountUp end={60} suffix="+" duration={2.5} />
               </div>
-              <div className="text-2xl text-[#4A3F35]">Courses Sold</div>
+              <div className="text-2xl text-[#4A3F35] font-bold">industry mentors</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="text-5xl font-bold text-[#4A3F35] mb-2">
                 <CountUp end={100} suffix="+" duration={2.5} />
               </div>
-              <div className="text-2xl text-[#4A3F35]">Active Students</div>
+              <div className="text-2xl text-[#4A3F35] font-bold">collaborations</div>
             </div>
           </div>
 
