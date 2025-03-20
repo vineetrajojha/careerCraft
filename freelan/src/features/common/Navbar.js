@@ -16,10 +16,10 @@ const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center">
-          <div className="-ml-6 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
+          <div className="-ml-6 h-14 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
             <Link to="/">
               <div className="flex items-center">
-                <img src="/carrercraftlogo.png" className="h-6 mr-2" alt="Career Craft Icon" />
+                <img src="/logo1.png" className="h-7 mr-2" alt="Career Craft Icon" />
               </div>
             </Link>
           </div>
@@ -27,7 +27,7 @@ const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
         
         {/* Navigation Links */}
         <div className="hidden md:flex items-center -mr-4">
-          <div className="bg-[#F8E5D8] rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
+          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
             <NavLink
               to="/"
               className={({ isActive }) =>
