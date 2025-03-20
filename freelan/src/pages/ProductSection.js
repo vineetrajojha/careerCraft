@@ -12,42 +12,42 @@ const ProductSection = () => {
     {
       id: 1,
       image: "https://i.postimg.cc/KkYCbJ3y/PHOTO-2025-03-16-16-00-24.jpg",
-      title: "Trial Product",
+      title: "Intelligent Creation: Master AI-Driven App and Web Development",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
       // tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 2,
       image: "https://i.postimg.cc/RFTr3nRH/r.jpg",
-      title: "Trial Product",
+      title: "Prompting with Precision: A Complete Guide to AI Communication",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
       // tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 3,
       image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
-      title: "Trial Product",
+      title: "Market Mavericks: Learn, Trade, and Thrive",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
       // tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 4,
       image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
-      title: "Trial Product",
+      title: "Foreign language: Learn German and French ,A1",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
       tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 5,
       image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
-      title: "Trial Product",
+      title: "Adobe Alchemy: Turn Images into Art with Photoshop",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
       tag: "ATTEND TRIAL WORKSHOP"
     },
     {
       id: 6,
       image: "https://i.postimg.cc/SKM09hT0/trial.jpg",
-      title: "Trial Product",
+      title: "The Entrepreneur’s Playbook: Mastering Business Creation and Growth",
       description: "lorem ipsum data fetch azure loren ipsum data fetch azure",
       tag: "ATTEND TRIAL WORKSHOP"
     }
@@ -65,7 +65,7 @@ const ProductSection = () => {
     <div className="bg-white py-16 px-4 font-outfit">
       <div className="container mx-auto">
         {/* Section Title */}
-        <h2 className="text-[#9C4A1A] md:text-5xl text-4xl font-bold text-center mb-16">
+        <h2 className="text-[#9C4A1A] md:text-5xl text-4xl font-extrabold text-center mb-16">
           Our Products
         </h2>
 

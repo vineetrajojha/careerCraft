@@ -1,13 +1,16 @@
 import React, { useEffect, useRef } from 'react';
-import logo1 from '../features/common/images/logo1.jpeg';
-import logo2 from '../features/common/images/logo2.jpeg';
-import logo3 from '../features/common/images/logo3.jpeg';
-import logo4 from '../features/common/images/logo4.jpeg';
-import logo5 from '../features/common/images/logo1.jpeg';
-import logo6 from '../features/common/images/logo2.jpeg';
+import logo1 from '../features/common/images/niims-logo.png';
+import logo2 from '../features/common/images/logo1.png';
+import logo3 from '../features/common/images/logo2.png';
+import logo4 from '../features/common/images/logo3.png';
+import logo5 from '../features/common/images/logo4.png';
+import logo6 from '../features/common/images/logo5.png';
+import logo7 from '../features/common/images/iim-b.jpg';
+import logo8 from '../features/common/images/logo6.png';
+import logo9 from '../features/common/images/logo7.png';
 
 const MentorsSection = () => {
-  const originalLogos = [logo1, logo2, logo3, logo4, logo5, logo6];
+  const originalLogos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9];
   
 //infinite scrolling
   const logos = [...originalLogos, ...originalLogos, ...originalLogos];
