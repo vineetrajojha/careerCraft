@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Main from './pages/Main';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import ViewAllProducts from './pages/ViewAllProducts';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CartPage from './pages/CartPage';
@@ -200,6 +201,10 @@ const router = createBrowserRouter([
   {
     path: '/reset-password',
     element: <ResetPasswordPage></ResetPasswordPage>,
+  },
+  {
+    path: '/view-all-products',
+    element: <ViewAllProducts />,
   },
   {
     path: '*',

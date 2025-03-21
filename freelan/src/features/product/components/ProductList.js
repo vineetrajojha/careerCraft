@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Footer from '../../../features/common/Footer';
+import Navbar from '../../../features/common/Navbar';
 import { useLocation } from 'react-router-dom';
 import {
   fetchBrandsAsync,
@@ -98,7 +100,7 @@ export default function ProductList() {
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchProductsByFiltersAsync({  pagination }));
+    dispatch(fetchProductsByFiltersAsync({ pagination }));
   }, [dispatch, page]);
 
   useEffect(() => {
@@ -112,6 +114,7 @@ export default function ProductList() {
 
   return (
     <div className="bg-white">
+      <Navbar />
       <div>
         {/* <MobileFilter
           handleFilter={handleFilter}
@@ -123,14 +126,15 @@ export default function ProductList() {
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              All Products
+            <h1 className="text-4xl font-bold tracking-tight text-[#9C4A1A]">
+              Our Products
             </h1>
-            <Link to= '/home'>
-            {isProductRoute && (<div className='text-right bg-blue-600 border p-2 rounded-lg font-semibold text-white'>
-          Go back
-        </div>)}
-            
+            <Link to="/home">
+              {isProductRoute && (
+                <div className="text-right bg-[#C65D34] px-6 py-2 rounded-full font-semibold text-white hover:bg-[#B54D24] transition duration-300">
+                  Go back
+                </div>
+              )}
             </Link>
            
 
@@ -217,14 +221,17 @@ export default function ProductList() {
           </section>
 
           {/* section of product and filters ends */}
-          <Pagination
-            page={page}
-            setPage={setPage}
-            handlePage={handlePage}
-            totalItems={totalItems}
-          ></Pagination>
+          <div className="flex justify-center pb-8">
+            <Pagination
+              page={page}
+              setPage={setPage}
+              handlePage={handlePage}
+              totalItems={totalItems}
+            />
+          </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }
@@ -407,13 +414,13 @@ export default function ProductList() {
 function ProductGrid({ products, status }) {
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
-        <div className="mt-6 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {status === 'loading' ? (
             <Grid
               height="80"
               width="80"
-              color="rgb(79, 70, 229) "
+              color="rgb(79, 70, 229)"
               ariaLabel="grid-loading"
               radius="12.5"
               wrapperStyle={{}}
@@ -423,46 +430,43 @@ function ProductGrid({ products, status }) {
           ) : null}
           {products.map((product) => (
             <Link to={`/product-detail/${product.id}`} key={product.id}>
-              <div className="group relative border-solid border-2 p-1  border-gray-200">
-                <div className="min-h-60  aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+              <div className="group relative bg-[#E6A06C] rounded-2xl p-4 shadow-lg transform transition-transform duration-300 hover:scale-105">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-xl mb-4">
                   <img
                     src={product.thumbnail}
                     alt={product.title}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    className="h-full w-full object-cover object-center"
                   />
                 </div>
-                <div className="mt-4  flex justify-between">
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-700">
-                      <div href={product.thumbnail}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.title}
-                      </div>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      {/* <StarIcon className="w-6 h-6 inline"></StarIcon>
-                      <span className=" align-bottom">{product.rating}</span> */}
-                    </p>
-                    <button className='bg-indigo-600 px-3 py-1.5 rounded-md text-white font-semibold text-sm
-                    shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Buy Now</button>
-                  </div>
-                  <div>
-                    <p className="text-sm block font-medium text-gray-900">
-                      ₹{product.discountPrice}
-                    </p>
-                    <p className="text-sm block line-through font-medium text-gray-400">
-                      ₹{product.price}
-                    </p>
+                <div className="flex flex-col h-full">
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-white text-sm mb-4 flex-grow">
+                    {product.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-white">
+                        ₹{product.discountPrice}
+                      </p>
+                      <p className="text-sm line-through font-medium text-white/70">
+                        ₹{product.price}
+                      </p>
+                    </div>
+                    <button className="bg-[#C65D34] text-white px-6 py-2 rounded-full text-sm hover:bg-[#B54D24] transition duration-300">
+                      Buy now
+                    </button>
                   </div>
                 </div>
                 {product.deleted && (
-                  <div>
-                    <p className="text-sm text-red-400">product deleted</p>
+                  <div className="absolute top-2 right-2">
+                    <p className="text-sm text-red-400 bg-white px-2 py-1 rounded-full">Product deleted</p>
                   </div>
                 )}
                 {product.stock <= 0 && (
-                  <div>
-                    <p className="text-sm text-red-400">out of stock</p>
+                  <div className="absolute top-2 right-2">
+                    <p className="text-sm text-red-400 bg-white px-2 py-1 rounded-full">Out of stock</p>
                   </div>
                 )}
               </div>

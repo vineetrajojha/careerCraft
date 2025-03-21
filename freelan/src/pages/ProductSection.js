@@ -126,10 +126,12 @@ const ProductSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <button className="bg-[#E6A06C] text-white px-8 sm:px-12 py-2 sm:py-3 rounded-full text-base sm:text-xl font-medium hover:bg-[#D99058] transition duration-300">
-            View All
-          </button>
+        <div className="flex justify-center mt-8">
+          <Link to="/view-all-products">
+            <button className="bg-[#E6A06C] text-white px-8 sm:px-12 py-2 sm:py-3 rounded-full text-base sm:text-xl font-medium hover:bg-[#D99058] transition duration-300">
+              View All
+            </button>
+          </Link>
         </div>
 
         {/* Detailed Product Modal */}
