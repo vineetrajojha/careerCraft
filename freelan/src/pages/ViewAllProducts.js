@@ -11,21 +11,18 @@ const ViewAllProducts = () => {
       title: "Foreign language: Learn German and French ,A1",
       description: "lorem ipsum data fetch azure lorem ipsum data fetch azure",
       image: "/path/to/language-course-image.jpg",
-      tag: "TRIAL WORKSHOP AVAILABLE FOR LIMITED TIME PERIOD",
     },
     {
       id: 2,
       title: "Adobe Alchemy: Turn Images into Art with Photoshop",
       description: "lorem ipsum data fetch azure lorem ipsum data fetch azure",
       image: "/path/to/photoshop-course-image.jpg",
-      tag: "TRIAL WORKSHOP AVAILABLE FOR LIMITED TIME PERIOD",
     },
     {
       id: 3,
       title: "The Entrepreneur's Playbook: Mastering Business Creation and Growth",
       description: "lorem ipsum data fetch azure lorem ipsum data fetch azure",
       image: "/path/to/business-course-image.jpg",
-      tag: "TRIAL WORKSHOP AVAILABLE FOR LIMITED TIME PERIOD",
     }
   ];
 
@@ -41,14 +38,9 @@ const ViewAllProducts = () => {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="bg-[#E6A06C] rounded-2xl p-6 shadow-lg transform transition-transform duration-300 hover:scale-105"
+                className="bg-[#E6A06C] max-h-[98%] rounded-2xl p-6 shadow-lg transform transition-transform duration-300 hover:scale-105"
               >
                 <div className="relative">
-                  <div className="bg-[#FF8D4D] text-white p-4 rounded-t-2xl">
-                    <p className="text-lg font-semibold mb-1">ATTEND</p>
-                    <p className="text-2xl font-bold">TRIAL</p>
-                    <p className="text-2xl font-bold">WORKSHOP</p>
-                  </div>
                   
                   <div className="aspect-w-16 aspect-h-9 mt-4">
                     <img
