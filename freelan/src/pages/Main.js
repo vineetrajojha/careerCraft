@@ -12,8 +12,7 @@ import MentorsSection from './MentorsSection';
 import Footer from '../features/common/Footer';
 import Navbar from '../features/common/Navbar';
 import newLogo from "../features/common/images/newLogo.png"
-
-// Add CountUp component for animations
+import Gallery from './Gallery';
 import CountUp from 'react-countup';
 
 // Extract FAQ data from features array
@@ -242,6 +241,53 @@ const Main = () => {
         <div>
           {MentorsSection && <MentorsSection />}
         </div>
+
+        {/* Gallery */}
+        <section>
+          <div className="gallery-container" id="gallery">
+            <h2 className="text-center mb-16 text-5xl font-bold">
+              <span className="text-[#4A3F35]">Our </span>
+              <span className="text-[#9C4A1A]">Gallery</span>
+            </h2>
+            <div className="gallery-grid">
+              <div className="photo small">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Career Craft Events</p>
+                </div>
+              </div>
+              <div className="photo large">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Workshop Sessions</p>
+                </div>
+              </div>
+              <div className="photo medium">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Training Programs</p>
+                </div>
+              </div>
+              <div className="photo tall">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Student Activities</p>
+                </div>
+              </div>
+              <div className="photo small2">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Campus Life</p>
+                </div>
+              </div>
+              <div className="photo wide">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Graduation Day</p>
+                </div>
+              </div>
+              <div className="photo wide2">
+                <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <p className="text-white text-xl font-semibold">Industry Visits</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         
         
