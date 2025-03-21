@@ -10,6 +10,19 @@ export const Navbar = ({ isLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  const scrollToFaqSection = () => {
+    if (location.pathname === '/') {
+      // If we're on the home page, scroll to the FAQ section
+      const faqSection = document.querySelector('.faq-section');
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If we're on another page, navigate to home and scroll to FAQ
+      window.location.href = '/#faq-section';
+    }
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -22,7 +35,7 @@ export const Navbar = ({ isLoggedIn }) => {
           <div className="-ml-6 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
             <Link to="/">
               <div className="flex items-center">
-                <img src="/carrercraftlogo.png" className="h-6 mr-2" alt="Career Craft Icon" />
+                <img src="/logo1.png" className="h-6 mr-2" alt="Career Craft Icon" />
               </div>
             </Link>
           </div>

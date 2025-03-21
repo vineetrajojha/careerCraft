@@ -1,10 +1,12 @@
-import React, { useState,useRef} from 'react';
-import { Link,NavLink } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper components
 import { Navigation, Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
 import 'swiper/css/bundle'; // Import Swiper styles
 import './styles.css'; // Import the CSS file for custom animations
 import { FaShoppingCart, FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { selectLoggedInUser } from '../features/auth/authSlice';
 
 import ProductSection from './ProductSection';
 import FaqSection from './FaqSection';
@@ -56,16 +58,14 @@ const testimonials = [
 
 
 const Main = () => {
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const user = useSelector(selectLoggedInUser);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const targetSectionRef = useRef(null);
-
   const targetFaqSection = useRef(null);
   const topRef = useRef(null);
 
@@ -73,13 +73,10 @@ const Main = () => {
     topRef.current.scrollIntoView({behavior : 'smooth'});
   }
   const scrollToFaqSection = () => {
-    // Scroll to the section when the button is clicked
     targetFaqSection.current.scrollIntoView({ behavior: 'smooth' });
   };
-
   
   const scrollToSection = () => {
-    // Scroll to the section when the button is clicked
     targetSectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   
@@ -108,7 +105,7 @@ const Main = () => {
 
       
         {/* Navbar */}
-        <Navbar />
+        <Navbar isLoggedIn={!!user} scrollToFaqSection={scrollToFaqSection} />
        
 
         {/* Header */}
@@ -131,12 +128,21 @@ const Main = () => {
                 className="w-64 sm:w-80 lg:w-96 h-auto mb-6 sm:mb-8"
               />
               <div className='login-but'>
-                <Link 
-                  to="/login"
-                  className="bg-[#E67E22] text-white px-8 sm:px-12 py-2 rounded-full text-base sm:text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
-                >
-                  Login
-                </Link>
+                {!user ? (
+                  <Link 
+                    to="/login"
+                    className="bg-[#E67E22] text-white px-8 sm:px-12 py-2 rounded-full text-base sm:text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
+                  >
+                    Login
+                  </Link>
+                ) : (
+                  <Link 
+                    to="/profile"
+                    className="bg-[#E67E22] text-white px-8 sm:px-12 py-2 rounded-full text-base sm:text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
+                  >
+                    My Profile
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -365,7 +371,7 @@ const Main = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-[#E6A06C] py-20 px-4 font-outfit">
+        <section className="bg-[#E6A06C] py-20 px-4 font-outfit faq-section" ref={targetFaqSection}>
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-5xl font-bold mb-16 text-[#4A3F35] text-center">
               Frequently Asked Questions.

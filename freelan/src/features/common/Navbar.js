@@ -58,12 +58,12 @@ const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
             >
               Contact Us
             </NavLink>
-            <p
+            <button
               onClick={scrollToFaqSection}
               className="text-black hover:text-gray-700 px-8 py-2 cursor-pointer font-outfit"
             >
               FAQs
-            </p>
+            </button>
             <Link
               to="/campus"
               className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit"
@@ -95,7 +95,7 @@ const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
           <Link to="/" className="text-black px-3 py-1 hover:text-gray-700">Home</Link>
           <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
-          <p onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer">FAQs</p>
+          <button onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
           <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
         </div>
       )}
