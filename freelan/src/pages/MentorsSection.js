@@ -37,26 +37,26 @@ const MentorsSection = () => {
   }, []);
 
   return (
-    <div className="bg-[#E6A06C] py-16 font-outfit" ref={sectionRef}>
+    <div className="bg-[#E6A06C] py-12 sm:py-16 font-outfit" ref={sectionRef}>
       <div className="container">
-        <h2 className="text-[#4A3F35] md:text-5xl text-4xl font-bold text-center mb-12 font-outfit animate-fade-in-down">
+        <h2 className="text-[#4A3F35] text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 font-outfit animate-fade-in-down">
           Our Mentors are from
         </h2>
         
         {/* Outer container with hidden overflow */}
         <div className="w-full overflow-x-hidden">
           {/* Inner container with extra padding on sides */}
-          <div className="flex animate-scroll px-4">
+          <div className="flex animate-scroll px-2 sm:px-4">
             {logos.map((logo, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 mx-6 transform transition-all duration-300 hover:scale-105"
+                className="flex-shrink-0 mx-2 sm:mx-4 lg:mx-6 transform transition-all duration-300 hover:scale-105"
               >
-                <div className="bg-white rounded-full p-4 w-48 h-48 flex items-center justify-center shadow-lg transition-transform duration-300 hover:shadow-xl">
+                <div className="bg-white rounded-full p-3 sm:p-4 w-32 sm:w-40 lg:w-48 h-32 sm:h-40 lg:h-48 flex items-center justify-center shadow-lg transition-transform duration-300 hover:shadow-xl">
                   <img
                     src={logo}
                     alt={`Mentor Logo ${(index % originalLogos.length) + 1}`}
-                    className="w-36 h-36 object-contain"
+                    className="w-24 sm:w-32 lg:w-36 h-24 sm:h-32 lg:h-36 object-contain"
                   />
                 </div>
               </div>

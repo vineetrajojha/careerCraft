@@ -112,7 +112,7 @@ export default function Login() {
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-3">
+              <div className="mt-6 grid">
                 <div>
                   <a
                     href="#"
@@ -123,17 +123,17 @@ export default function Login() {
                   </a>
                 </div>
 
-                <div>
-                  <a
+                {/* <div>
+                   <a
                     href="#"
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Login with Facebook</span>
                     <FaFacebook className="h-5 w-5" />
-                  </a>
-                </div>
+                  </a> 
+                </div> */}
 
-                <div>
+                {/* <div>
                   <a
                     href="#"
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
@@ -141,7 +141,7 @@ export default function Login() {
                     <span className="sr-only">Login with LinkedIn</span>
                     <FaLinkedin className="h-5 w-5" />
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
 

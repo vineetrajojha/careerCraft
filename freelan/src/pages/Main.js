@@ -113,30 +113,30 @@ const Main = () => {
 
         {/* Header */}
         <header className="bg-white text-black h-[86vh]">
-          <div className="mx-auto max-w-7xl px-12 py-32 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
-            <div className="lg:w-1/2 text-left mb-6 lg:mb-0">
-              <h2 className="text-[#4A4A4A] text-lg mb-1 font-outfit font-extrabold">Join</h2>
-              <h1 className="text-5xl mb-6 font-outfit">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 flex flex-col lg:flex-row items-center justify-between">
+            <div className="lg:w-1/2 text-left mb-8 lg:mb-0">
+              <h2 className="text-[#4A4A4A] text-base sm:text-lg mb-2 font-outfit font-extrabold">Join</h2>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6 font-outfit">
                 <span className="text-[#4A3F35] font-extrabold">Career</span>{" "}
                 <span className="text-[#9C4A1A] font-extrabold">Craft</span>
               </h1>
-              <p className="text-[#4A4A4A] text-xl leading-relaxed max-w-xl font-outfit">
-              Take charge of your future! We empower you <br/> with cutting-edge skills to innovate, succeed, <br/> and lead New India forward.
+              <p className="text-[#4A4A4A] text-lg sm:text-xl leading-relaxed max-w-xl font-outfit">
+                Take charge of your future! We empower you <br className="hidden sm:block"/> with cutting-edge skills to innovate, succeed, <br className="hidden sm:block"/> and lead New India forward.
               </p>
             </div>
             <div className="lg:w-1/2 flex flex-col items-center">
               <img 
                 src="/carrercraftlogo.png" 
                 alt="Career Craft Logo" 
-                className="w-96 h-auto mb-8"
+                className="w-64 sm:w-80 lg:w-96 h-auto mb-6 sm:mb-8"
               />
               <div className='login-but'>
-              <Link 
-                to="/login"
-                className="bg-[#E67E22] text-white px-12 py-2 rounded-full text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
-              >
-                Login
-              </Link>
+                <Link 
+                  to="/login"
+                  className="bg-[#E67E22] text-white px-8 sm:px-12 py-2 rounded-full text-base sm:text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
+                >
+                  Login
+                </Link>
               </div>
             </div>
           </div>
