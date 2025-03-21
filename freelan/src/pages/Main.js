@@ -112,8 +112,8 @@ const Main = () => {
        
 
         {/* Header */}
-        <header className="bg-white text-black">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+        <header className="bg-white text-black h-[86vh]">
+          <div className="mx-auto max-w-7xl px-12 py-32 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
             <div className="lg:w-1/2 text-left mb-6 lg:mb-0">
               <h2 className="text-[#4A4A4A] text-lg mb-1 font-outfit font-extrabold">Join</h2>
               <h1 className="text-5xl mb-6 font-outfit">
@@ -130,12 +130,14 @@ const Main = () => {
                 alt="Career Craft Logo" 
                 className="w-96 h-auto mb-8"
               />
+              <div className='login-but'>
               <Link 
                 to="/login"
                 className="bg-[#E67E22] text-white px-12 py-2 rounded-full text-lg hover:bg-[#d67118] transition-colors duration-300 font-outfit"
               >
                 Login
               </Link>
+              </div>
             </div>
           </div>
         </header>

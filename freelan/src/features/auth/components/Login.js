@@ -62,7 +62,7 @@ export default function Login() {
                       },
                     })}
                     type="email"
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-[#E1A16D] focus:outline-none focus:ring-[#E1A16D] sm:text-sm"
                   />
                   {errors.email && (
                     <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
@@ -84,7 +84,7 @@ export default function Login() {
                       required: 'Password is required',
                     })}
                     type="password"
-                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-[#E1A16D] focus:outline-none focus:ring-[#E1A16D] sm:text-sm"
                   />
                   {errors.password && (
                     <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
@@ -95,7 +95,7 @@ export default function Login() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md border border-transparent bg-[#E1A16D] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#d89359] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="flex w-full justify-center rounded-md border border-transparent bg-[#E1A16D] py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-[#d89359] focus:outline-none focus:ring-2 focus:ring-[#E1A16D] focus:ring-offset-2"
                 >
                   Log in
                 </button>
@@ -149,7 +149,7 @@ export default function Login() {
               Don't have an account?{' '}
               <Link
                 to="/signup"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="font-medium text-[#E1A16D] hover:text-[#E1A16D]"
               >
                 Create Account
               </Link>

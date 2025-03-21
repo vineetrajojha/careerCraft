@@ -19,15 +19,15 @@ export default function Signup() {
   return (
     <>
       {user && <Navigate to="/home" replace={true}></Navigate>}
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-orange-200">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto rounded"
-            src="/carrercraftlogo.jpg"
+            src="/logo1.png"
             alt="Your Company"
           />
-          <h2 className="mt-4 text-center text-2xl md:font-roboto font-roboto md:font-bold leading-9 tracking-tight text-gray-900">
-            Create a<span className='text-blue-900'> New</span>  Account
+          <h2 className="mt-4 text-center text-2xl md:font-outfit font-outfit md:font-bold leading-9 tracking-tight text-gray-900">
+            Create a<span className='text-[#9C4A1A]'> New</span>  Account
           </h2>
         </div>
 
@@ -72,7 +72,7 @@ export default function Signup() {
     },
   })}
   type="email"
-  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#E1A16D] sm:text-sm sm:leading-6"
 />
                 {errors.email && (
                   <p className="text-red-500">{errors.email.message}</p>
@@ -103,7 +103,7 @@ export default function Signup() {
                     },
                   })}
                   type="password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#E1A16D] sm:text-sm sm:leading-6"
                 />
                 {errors.password && (
                   <p className="text-red-500">{errors.password.message}</p>
@@ -129,7 +129,7 @@ export default function Signup() {
                       value === formValues.password || 'password not matching',
                   })}
                   type="password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#E1A16D] sm:text-sm sm:leading-6"
                 />
                 {errors.confirmPassword && (
                   <p className="text-red-500">
@@ -143,7 +143,7 @@ export default function Signup() {
             
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-[#E1A16D] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#d89359] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E1A16D]"
               >
                 Sign Up
               </button>
@@ -155,12 +155,13 @@ export default function Signup() {
             Already a Member?{' '}
             <Link
               to="/login"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              className="font-semibold leading-6 text-[#E1A16D] hover:text-[#d89359]"
             >
               Log In
             </Link>
           </p>
         </div>
+        <hr className='bg-black h-[1px] mt-[10%]'></hr>
       </div>
     </>
   );
