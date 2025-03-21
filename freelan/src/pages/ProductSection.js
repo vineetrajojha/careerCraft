@@ -13,18 +13,23 @@ const ProductSection = () => {
       image: "https://i.postimg.cc/KkYCbJ3y/PHOTO-2025-03-16-16-00-24.jpg",
       title: "The Masterclass: AI for Professionals Workshop",
       description: "Elevate your career with our expert-led Career Craft Course Bundle, designed to help you succeed in today's competitive world.",
-      fullDescription: "Master personal finance to secure your future, digital marketing to boost your career, and AI prompts & automation to stay ahead in the evolving job market. Prepare for GDPI (Group Discussion & Personal Interview) with personalized coaching and learn stock market investment to grow your wealth.",
+      fullDescription: "Maste your to grow your wealth.Elevate your career with our expert-led Career Craft Course Bundle, designed to help you succeed in today's competitive world.Elevate your career with our expert-led Career Craft Course Bundle, designed to help you succeed in today's competitive world.Elevate your career with our expert-led Career Craft Course Bundle, designed to help you succeed in today's competitive world.",
       productDetails: [
         "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
-        "Automation & Productivity Boost – Master AI-driven automation to save time and optimize performance.",
-        "Data-Driven Decision Making – Use AI insights to enhance business strategies and professional growth.",
-        "Real-World Applications – Explore AI's impact across industries with practical case studies."
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency."
       ],
       whyEnroll: [
         "Stay Ahead of the Curve – Gain essential AI skills to remain competitive in the evolving job market.",
-        "Boost Career Prospects – Leverage AI to work smarter and improve job efficiency.",
-        "Expert-Led Training – Learn from industry professionals with real-world experience.",
-        "Versatile Skill Set – Applicable across multiple fields, from marketing to finance and operations.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
+        "Hands-On AI Integration – Learn to incorporate AI tools into your daily tasks for efficiency.",
         "Practical & Actionable Insights – Walk away with AI strategies you can implement immediately."
       ],
       price: "$499"
@@ -130,7 +135,7 @@ const ProductSection = () => {
         {/* Detailed Product Modal */}
         {selectedProduct && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 overflow-y-auto p-4">
-            <div className="bg-white rounded-3xl shadow-xl w-11/12 max-w-4xl relative">
+            <div className="bg-white rounded-3xl shadow-xl w-11/12 max-w-4xl max-h-[98vh] relative">
               <button
                 onClick={closeModal}
                 className="absolute right-4 top-4 text-gray-600 hover:text-gray-800"
