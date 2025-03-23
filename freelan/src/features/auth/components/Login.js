@@ -159,7 +159,7 @@ export default function Login() {
       </div>
 
       {/* Right Side - Image */}
-      <div className="hidden lg:block lg:w-1/2 bg-cover bg-center  relative rounded-l-[20px]" style={{ backgroundImage: "url('/loginpage-image.svg')" }}>
+      <div className="hidden lg:block lg:w-1/3 bg-cover bg-center  relative rounded-l-[20px]" style={{ backgroundImage: "url('/loginpage-image.svg')" }}>
       </div>
     </div>
   );
