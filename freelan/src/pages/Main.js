@@ -15,6 +15,10 @@ import Footer from '../features/common/Footer';
 import Navbar from '../features/common/Navbar';
 import newLogo from "../features/common/images/newLogo.png"
 
+// AOS LIBRARY for effects
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
+
 // Add CountUp component for animations
 import CountUp from 'react-countup';
 
@@ -84,6 +88,33 @@ const Main = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const [startCount, setStartCount] = useState(false);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      once: true, // Whether animation should happen only once
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setStartCount(true);
+          observer.disconnect(); // Stop observing after the first trigger
+        }
+      },
+      { threshold: 0.5 } // 50% of element must be visible
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="main-content">
       {/* 3D Cube and Particles */}
@@ -109,6 +140,7 @@ const Main = () => {
        
 
         {/* Header */}
+        <div data-aos="zoom-in">
         <header className="bg-white text-black h-[86vh]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 flex flex-col lg:flex-row items-center justify-between">
             <div className="lg:w-1/2 text-left mb-8 lg:mb-0">
@@ -147,8 +179,10 @@ const Main = () => {
             </div>
           </div>
         </header>
+        </div>
 
         {/* Features */}
+        <div data-aos="fade-up">
         <section className="font-outfit text-center p-10 bg-[#E6A06C] py-20">
           <h2 className="md:text-5xl text-4xl font-bold mb-16">
             <span className="text-[#4A3F35]">why choose </span>
@@ -158,27 +192,31 @@ const Main = () => {
           </h2>
 
           {/* Statistics */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            <div className="flex flex-col items-center">
-              <div className="text-5xl font-bold text-[rgb(74,63,53)] mb-2">
-                <CountUp end={10000} suffix="+" duration={2.3} />
-              </div>
-              <div className="text-2xl text-[#4A3F35] font-bold">Impacted Careers </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="text-5xl font-bold text-[#4A3F35] mb-2">
-                <CountUp end={60} suffix="+" duration={2.5} />
-              </div>
-              <div className="text-2xl text-[#4A3F35] font-bold">industry mentors</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="text-5xl font-bold text-[#4A3F35] mb-2">
-                <CountUp end={100} suffix="+" duration={2.5} />
-              </div>
-              <div className="text-2xl text-[#4A3F35] font-bold">collaborations</div>
-            </div>
+          <div ref={statsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        {/* Impacted Careers */}
+        <div className="flex flex-col items-center">
+          <div className="text-5xl font-bold text-[rgb(74,63,53)] mb-2">
+            {startCount ? <CountUp end={10000} suffix="+" duration={2.3} /> : "0+"}
           </div>
+          <div className="text-2xl text-[#4A3F35] font-bold">Impacted Careers</div>
+        </div>
 
+        {/* Industry Mentors */}
+        <div className="flex flex-col items-center">
+          <div className="text-5xl font-bold text-[#4A3F35] mb-2">
+            {startCount ? <CountUp end={60} suffix="+" duration={2.5} /> : "0+"}
+          </div>
+          <div className="text-2xl text-[#4A3F35] font-bold">Industry Mentors</div>
+        </div>
+        
+         {/* Collaborations */}
+                <div className="flex flex-col items-center">
+          <div className="text-5xl font-bold text-[#4A3F35] mb-2">
+            {startCount ? <CountUp end={100} suffix="+" duration={2.5} /> : "0+"}
+          </div>
+          <div className="text-2xl text-[#4A3F35] font-bold">Collaborations</div>
+        </div>
+      </div>
           
 
           {/* Features Grid */}
@@ -238,22 +276,24 @@ const Main = () => {
             
           </div>
         </section>
+        </div>
 
        
-
-
-      
+        <div data-aos="fade-up">
         <div ref={targetSectionRef} className="flex flex-wrap gap-6 justify-center items-center min-h-screen bg-stone-100">
           {ProductSection && <ProductSection />}
         </div>
-
+        </div>
+        <div data-aos="fade-up">
         <div>
           {MentorsSection && <MentorsSection />}
+        </div>
         </div>
 
         
         
         {/* Testimonials */}
+        <div data-aos="fade-up">
         <section className="bg-white py-20 font-outfit overflow-hidden">
           <div className="container mx-auto px-4">
             <h2 className="text-center mb-16 text-5xl font-bold">
@@ -369,8 +409,10 @@ const Main = () => {
             </div>
           </div>
         </section>
+        </div>
 
         {/* FAQ Section */}
+        <div data-aos="fade-up">
         <section className="bg-[#E6A06C] py-20 px-4 font-outfit faq-section" ref={targetFaqSection}>
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-5xl font-bold mb-16 text-[#4A3F35] text-center">
@@ -404,6 +446,7 @@ const Main = () => {
             </div>
           </div>
         </section>
+        </div>
 
 
         {/* Footer */}
