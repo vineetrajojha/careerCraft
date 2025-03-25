@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Footer from '../features/common/Footer';
 import { useLocation } from 'react-router-dom';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import about1 from '../features/common/images/about1.png';
+import about1 from '../features/common/images/about-us.png';
 import about2 from '../features/common/images/about2.png';
 
 export const Navbar = ({ isLoggedIn }) => {
