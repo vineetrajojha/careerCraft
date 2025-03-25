@@ -117,7 +117,7 @@ const Navbar = ({ scrollToFaqSection }) => {
                   <div>
                     <Menu.Button className="flex items-center text-[#E67E22] hover:text-[#d67118] transition-colors duration-300">
                       <FaUser className="text-xl mr-1" />
-                      <span className="hidden lg:inline">My Profile</span>
+                      <span className="hidden lg:inline"></span>
                     </Menu.Button>
                   </div>
                   <Transition

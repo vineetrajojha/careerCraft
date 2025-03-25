@@ -103,7 +103,7 @@ export const Navbar = ({ isLoggedIn }) => {
                   className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300 flex items-center"
                 >
                   <FaUser className="text-xl mr-1" />
-                  <span className="hidden lg:inline">My Profile</span>
+                  <span className="hidden lg:inline"></span>
                 </Link>
               </>
             )}
