@@ -23,9 +23,9 @@ function Footer() {
             {/* Ready to upskill text */}
             <div className="space-y-4">
               <h2 className="text-4xl font-bold">
-                <span className="text-[#4A3F35]">ready to </span>
-                <span className="text-[#9C4A1A]">upskill </span>
-                <span className="text-[#4A3F35]">yourself?</span>
+                <span className="text-[#4A3F35]">Ready to </span>
+                <span className="text-[#9C4A1A]">Upskill </span>
+                <span className="text-[#4A3F35]">Yourself?</span>
               </h2>
               <p className="text-[#4A3F35] text-lg">
                 Join Career Craft today and take the best step towards your future
@@ -44,7 +44,7 @@ function Footer() {
 
               {/* Social Media Links */}
               <div className="space-y-3">
-                <h3 className="text-[#4A3F35]">do follow us on :</h3>
+                <h3 className="text-[#4A3F35]">Do follow us on :</h3>
                 <div className="space-y-2">
                   <a href="https://www.instagram.com/careercraft6" className="block underline text-[#4A3F35] hover:text-[#9C4A1A] flex items-center gap-2">
                     <FaInstagram /> CareerCraft6
@@ -61,7 +61,6 @@ function Footer() {
             {/* Copyright */}
             <div className="text-[#4A3F35] mt-4 flex flex-col items-center justify-center">
               <p className=" text-[16px]">© 2025 <span className="text-[#9C4A1A] font-medium">Career Craft</span> all rights reserved.</p>
-              <p className=" text-[14px]">Designed & Developed by <a href="https://www.theyukt.com/" className="text-[#9C4A1A] font-medium underline">theYukt</a></p>
             </div>
       </div>
     </footer>
