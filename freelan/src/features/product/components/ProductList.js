@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Footer from '../../../features/common/Footer';
 import Navbar from '../../../features/common/Navbar';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   fetchBrandsAsync,
   fetchCategoriesAsync,
@@ -29,6 +29,9 @@ import { Link } from 'react-router-dom';
 import { ITEMS_PER_PAGE } from '../../../app/constants';
 import Pagination from '../../common/Pagination';
 import { Grid } from 'react-loader-spinner';
+import { addToCartAsync } from '../../cart/cartSlice';
+import { selectLoggedInUser } from '../../auth/authSlice';
+import { toast } from 'react-toastify';
 
 // const sortOptions = [
 //   { name: 'Best Rating', sort: 'rating', order: 'desc', current: false },
@@ -412,6 +415,38 @@ export default function ProductList() {
 // }
 
 function ProductGrid({ products, status }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector(selectLoggedInUser);
+
+  const handleBuyNow = (e, product) => {
+    e.preventDefault(); // Prevent Link navigation
+    if (!user) {
+      toast.info("Please login to purchase this item");
+      navigate('/login', { 
+        state: { 
+          from: '/productList',
+          buyNow: product 
+        } 
+      });
+    } else {
+      dispatch(addToCartAsync({ 
+        item: {
+          product: product.id, 
+          quantity: 1 
+        },
+        alert: toast
+      })).unwrap()
+        .then(() => {
+          navigate('/checkout');
+        })
+        .catch((error) => {
+          console.error('Failed to process purchase:', error);
+          toast.error("Failed to process your purchase. Please try again.");
+        });
+    }
+  };
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -448,13 +483,18 @@ function ProductGrid({ products, status }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-medium text-white">
-                        ₹{product.discountPrice}
+                        ₹{product.discountPrice || product.price}
                       </p>
-                      <p className="text-sm line-through font-medium text-white/70">
-                        ₹{product.price}
-                      </p>
+                      {product.discountPrice && (
+                        <p className="text-sm line-through font-medium text-white/70">
+                          ₹{product.price}
+                        </p>
+                      )}
                     </div>
-                    <button className="bg-[#C65D34] text-white px-6 py-2 rounded-full text-sm hover:bg-[#B54D24] transition duration-300">
+                    <button 
+                      onClick={(e) => handleBuyNow(e, product)}
+                      className="bg-[#C65D34] text-white px-6 py-2 rounded-full text-sm hover:bg-[#B54D24] transition duration-300"
+                    >
                       Buy now
                     </button>
                   </div>

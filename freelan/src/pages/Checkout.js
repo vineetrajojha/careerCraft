@@ -39,7 +39,24 @@ function Checkout() {
   console.log(OrderId)
 
   const totalAmount = items.reduce(
-    (amount, item) => item.product.discountPrice * item.quantity + amount,
+    (amount, item) => {
+      // Check if item.product exists and has valid price
+      if (!item.product) return amount;
+      
+      // Get the price, handling both string and number formats
+      let price = 0;
+      if (item.product.discountPrice) {
+        price = typeof item.product.discountPrice === 'string' 
+          ? parseInt(item.product.discountPrice.replace(/[^\d]/g, ''))
+          : item.product.discountPrice;
+      } else if (item.product.price) {
+        price = typeof item.product.price === 'string'
+          ? parseInt(item.product.price.replace(/[^\d]/g, ''))
+          : item.product.price;
+      }
+      
+      return price * item.quantity + amount;
+    },
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
@@ -452,8 +469,8 @@ function Checkout() {
                       <li key={item.id} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            src={item.product.thumbnail}
-                            alt={item.product.title}
+                            src={item.product?.thumbnail || item.product?.image || '/products/default-product.png'}
+                            alt={item.product?.title || 'Product'}
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
@@ -462,16 +479,16 @@ function Checkout() {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={item.product.id}>
-                                  {item.product.title}
+                                <a href={item.product?.id}>
+                                  {item.product?.title || 'Unnamed Product'}
                                 </a>
                               </h3>
                               <p className="ml-4">
-                                ₹{item.product.discountPrice}
+                                ₹{item.product?.discountPrice || item.product?.price || 0}
                               </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
-                              {item.product.brand}
+                              {item.product?.brand || "Workshop"}
                             </p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">

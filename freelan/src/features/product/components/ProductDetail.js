@@ -38,13 +38,7 @@ export default function ProductDetail() {
         product: product.id,
         quantity: 1,
       };
-      // if (selectedColor) {
-      //   newItem.color = selectedColor;
-      // }
-      // if (selectedSize) {
-      //   newItem.size = selectedSize;
-      // }
-      dispatch(addToCartAsync({item:newItem, alert}));
+      dispatch(addToCartAsync({item: newItem, alert}));
     } else {
       alert.error('Item Already added');
     }

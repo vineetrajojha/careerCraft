@@ -32,10 +32,21 @@ export default function Cart() {
 
   const totalAmount = items.reduce(
     (amount, item) => {
-      // Check if discountPrice exists, otherwise use price
-      const price = item.product.discountPrice || 
-                   (item.product.price && parseInt(item.product.price.replace(/[^\d]/g, ''))) || 
-                   0;
+      // Check if item.product exists and has valid price
+      if (!item.product) return amount;
+      
+      // Get the price, handling both string and number formats
+      let price = 0;
+      if (item.product.discountPrice) {
+        price = typeof item.product.discountPrice === 'string' 
+          ? parseInt(item.product.discountPrice.replace(/[^\d]/g, ''))
+          : item.product.discountPrice;
+      } else if (item.product.price) {
+        price = typeof item.product.price === 'string'
+          ? parseInt(item.product.price.replace(/[^\d]/g, ''))
+          : item.product.price;
+      }
+      
       return price * item.quantity + amount;
     },
     0
@@ -105,8 +116,8 @@ export default function Cart() {
                 <li key={item.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
-                      src={item.product.thumbnail || item.product.image}
-                      alt={item.product.title}
+                      src={item.product?.thumbnail || item.product?.image || '/products/default-product.png'}
+                      alt={item.product?.title || 'Product'}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -114,13 +125,13 @@ export default function Cart() {
                   <div className="ml-4 flex flex-1 flex-col">
                     <div>
                       <div className="flex justify-between text-lg font-medium text-gray-900">
-                        <h3 className="text-[#9C4A1A]">{item.product.title}</h3>
+                        <h3 className="text-[#9C4A1A]">{item.product?.title || 'Unnamed Product'}</h3>
                         <p className="ml-4 text-[#C65D34]">
-                          {formatPrice(item.product.discountPrice || item.product.price)}
+                          {formatPrice(item.product?.discountPrice || item.product?.price)}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">
-                        {item.product.brand || "Workshop"}
+                        {item.product?.brand || "Workshop"}
                       </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
@@ -147,7 +158,7 @@ export default function Cart() {
 
                       <div className="flex">
                         <Modal
-                          title={`Delete ${item.product.title}`}
+                          title={`Delete ${item.product?.title || 'Unnamed Product'}`}
                           message="Are you sure you want to delete this item from your cart?"
                           dangerOption="Delete"
                           cancelOption="Cancel"

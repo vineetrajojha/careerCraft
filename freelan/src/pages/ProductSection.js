@@ -54,7 +54,7 @@ const ProductSection = () => {
         "What Can You Expect from the Adobe Alchemy: Turn Images into Art with Photoshop Workshop?",
         "Master the art of digital editing and design with industry-leading tools and expert guidance.",
         "1. Photo Retouching Mastery – Learn professional techniques to enhance and refine images.",
-        "2.	Graphic Creation & Design – Develop eye-catching visuals using Photoshop’s powerful features.",
+        "2.	Graphic Creation & Design – Develop eye-catching visuals using Photoshop's powerful features.",
         "3.	Advanced Editing Techniques – Explore layers, masks, filters, and effects to elevate your designs.",
         "4.	Hands-On Learning – Gain practical experience through real-world projects and expert mentorship."
       ],
@@ -71,11 +71,11 @@ const ProductSection = () => {
     {
       id: 2,
       image: "/products/The-Entrepreneur-Playbook.png",
-      title: "The Entrepreneur’s Playbook: Mastering Business Creation and Growth",
+      title: "The Entrepreneur's Playbook: Mastering Business Creation and Growth",
       description: "A comprehensive workshop designed to guide aspiring entrepreneurs through the fundamentals of building and scaling a successful business.",
       fullDescription: "A comprehensive workshop designed to guide aspiring entrepreneurs through the fundamentals of building and scaling a successful business. Learn essential strategies for market research, business modeling, funding, and growth from industry experts. Perfect for students and professionals looking to turn ideas into thriving ventures.",
       productDetails: [
-        "What Can You Expect from The Entrepreneur’s Playbook: Mastering Business Creation and Growth Workshop?",
+        "What Can You Expect from The Entrepreneur's Playbook: Mastering Business Creation and Growth Workshop?",
         "Gain the knowledge and skills needed to build, launch, and scale a successful business with expert guidance.",
         "1.	Market Research & Opportunity Identification – Learn how to analyze markets and uncover profitable business opportunities.",
         "2.	Business Modeling & Strategy – Develop a solid business plan with proven frameworks for long-term success.",
@@ -95,11 +95,11 @@ const ProductSection = () => {
     {
       id: 3,
       image: "/products/the-influencer-playbook.png",
-      title: "The Influencer’s Playbook: Build, Brand, and Influence",
+      title: "The Influencer's Playbook: Build, Brand, and Influence",
       description: "A power-packed workshop designed to help content creators establish a strong brand, engage audiences, and monetize their work. ",
       fullDescription: "A power-packed workshop designed to help content creators establish a strong brand, engage audiences, and monetize their work. Learn from industry experts how to create impactful content, grow your online presence, and turn creativity into influence. Ideal for aspiring creators and professionals looking to stand out in the digital world.",
       productDetails: [
-        "What Can You Expect from The Influencer’s Playbook: Build, Brand, and Influence Workshop?",
+        "What Can You Expect from The Influencer's Playbook: Build, Brand, and Influence Workshop?",
         "Master the art of content creation, audience engagement, and personal branding to grow your influence online.",
         "1.	Brand Building & Positioning – Learn how to craft a unique personal brand that stands out.",
         "2.	Content Creation Strategies – Develop high-impact content that resonates with your audience.",
@@ -224,8 +224,11 @@ const ProductSection = () => {
       try {
         // If user is logged in, add the item to cart
         dispatch(addToCartAsync({ 
-          product: product.id, 
-          quantity: 1,
+          item: {
+            product: product.id, 
+            quantity: 1,
+          },
+          alert: toast
         })).unwrap()
           .then(() => {
             toast.success(`${product.title} added to cart!`);
@@ -260,8 +263,11 @@ const ProductSection = () => {
       try {
         // If user is logged in, add to cart and redirect to checkout
         dispatch(addToCartAsync({ 
-          product: product.id, 
-          quantity: 1 
+          item: {
+            product: product.id, 
+            quantity: 1 
+          },
+          alert: toast
         })).unwrap()
           .then(() => {
             navigate('/checkout');
