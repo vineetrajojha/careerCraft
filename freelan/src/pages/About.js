@@ -128,7 +128,7 @@ const About = () => (
     <Navbar />
     <div className="container mx-auto px-4 py-12 max-w-7xl">
       {/* About Us Section */}
-      <h1 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center">About Us</h1>
+      <h1 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center"><span className="text-[#9C4A1A]">About</span> Us</h1>
       
       <div className="flex flex-col lg:flex-row items-center gap-8 mb-20">
         <div className="lg:w-1/2 bg-[#F8E5D8] rounded-3xl p-8">
@@ -172,7 +172,7 @@ const About = () => (
       </div>
 
       {/* Our Mission Section */}
-      <h2 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center">Our Mission</h2>
+      <h2 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center">Our <span className="text-[#9C4A1A]">Mission</span></h2>
       
       <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
         <div className="lg:w-1/2">
@@ -197,6 +197,7 @@ const About = () => (
           </p>
         </div>
       </div>
+      <hr className='h-0.5 bg-[#4A4A4A] rounded-md mt-6'></hr>
     </div>
     <Footer />
   </div>

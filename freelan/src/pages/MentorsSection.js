@@ -40,7 +40,7 @@ const MentorsSection = () => {
     <div className="bg-[#E6A06C] py-12 sm:py-16 font-outfit" ref={sectionRef}>
       <div className="container">
         <h2 className="text-[#4A3F35] text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 font-outfit animate-fade-in-down">
-          Our Mentors are from
+          Our <span className="text-[#9C4A1A]">Mentors</span> are from
         </h2>
         
         {/* Outer container with hidden overflow */}

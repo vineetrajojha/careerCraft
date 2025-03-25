@@ -16,12 +16,12 @@ const ContactUs = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             {/* Contact Form */}
             <div className="w-full md:w-1/2">
-              <h2 className="text-5xl font-bold mb-8 text-[#4A3F35]">Send us a Message</h2>
+              <h2 className="text-5xl font-bold mb-8 text-white">Send us a Message</h2>
               
               <form className="space-y-4 text-xl">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-black mb-2">First Name</label>
+                    <label className="block text-white mb-2">First Name</label>
                     <input
                       type="text"
                       placeholder="First Name"
@@ -29,7 +29,7 @@ const ContactUs = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-black mb-2">Last Name</label>
+                    <label className="block text-white mb-2">Last Name</label>
                     <input
                       type="text"
                       placeholder="Last Name"
@@ -39,7 +39,7 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <label className="block text-black mb-2">Phone Number</label>
+                  <label className="block text-white mb-2">Phone Number</label>
                   <input
                     type="tel"
                     placeholder="+91 98XXXXXXXX"
@@ -48,7 +48,7 @@ const ContactUs = () => {
                 </div>
 
                 <div>
-                  <label className="block text-black mb-2">Email</label>
+                  <label className="block text-white mb-2">Email</label>
                   <input
                     type="email"
                     placeholder="info.vbajaj@gmail.com"
@@ -76,7 +76,7 @@ const ContactUs = () => {
           </div>
         </div>
       </section>
-
+      <hr className='h-0.5 bg-[#4A4A4A] rounded-md '></hr>
       <Footer />
     </div>
   );

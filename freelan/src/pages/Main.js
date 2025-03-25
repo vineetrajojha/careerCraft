@@ -11,6 +11,7 @@ import { selectLoggedInUser } from '../features/auth/authSlice';
 import ProductSection from './ProductSection';
 import FaqSection from './FaqSection';
 import MentorsSection from './MentorsSection';
+import GallerySection from './GallerySection';
 import Footer from '../features/common/Footer';
 import Navbar from '../features/common/Navbar';
 import newLogo from "../features/common/images/newLogo.png"
@@ -95,7 +96,6 @@ const Main = () => {
 
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
-      once: true, // Whether animation should happen only once
     });
 
     const observer = new IntersectionObserver(
@@ -185,7 +185,7 @@ const Main = () => {
         <div data-aos="fade-up">
         <section className="font-outfit text-center p-10 bg-[#E6A06C] py-20">
           <h2 className="md:text-5xl text-4xl font-bold mb-16">
-            <span className="text-[#4A3F35]">why choose </span>
+            <span className="text-[#4A3F35]">Why choose </span>
             <span className="text-[#4A3F35]">Career </span>
             <span className="text-[#9C4A1A]">Craft</span>
             <span className="text-[#4A3F35]">?</span>
@@ -290,6 +290,11 @@ const Main = () => {
         </div>
         </div>
 
+        <div data-aos="fade-up">
+        <div>
+          {GallerySection && <GallerySection />}
+        </div>
+        </div>
         
         
         {/* Testimonials */}
@@ -416,7 +421,7 @@ const Main = () => {
         <section className="bg-[#E6A06C] py-20 px-4 font-outfit faq-section" ref={targetFaqSection}>
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-5xl font-bold mb-16 text-[#4A3F35] text-center">
-              Frequently Asked Questions.
+              Frequently Asked <span className="text-[#9C4A1A]">Questions</span>
             </h2>
             
             <div className="space-y-4">

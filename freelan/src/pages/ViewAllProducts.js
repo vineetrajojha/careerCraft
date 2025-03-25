@@ -30,7 +30,7 @@ const ViewAllProducts = () => {
         "5.	Practical & Actionable Knowledge – Walk away with skills you can immediately apply.",
         "Take your creativity to the next level—transform images into art with Photoshop!"
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 2,
@@ -54,7 +54,7 @@ const ViewAllProducts = () => {
         "5.	Practical & Actionable Knowledge – Walk away with strategies you can implement immediately.",
         "Take the first step toward building your dream business—enroll now!"
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 3,
@@ -78,7 +78,7 @@ const ViewAllProducts = () => {
         "5.	Practical & Actionable Takeaways – Walk away with strategies you can apply immediately."
         
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 4,
@@ -103,7 +103,7 @@ const ViewAllProducts = () => {
         "Unlock the power of data—start your journey into data science today!"
         
       ],
-      price: "$499"
+      price: "₹8,999"
     },
     {
       id: 5,
@@ -128,7 +128,7 @@ const ViewAllProducts = () => {
         "Transform the way you develop—unlock the potential of AI in app and web development today!"
         
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 6,
@@ -153,7 +153,7 @@ const ViewAllProducts = () => {
         "Unlock the full potential of AI—learn the science of effective prompting today!"
         
       ],
-      price: "$499"
+      price: "₹8,499"
     },
     {
       id: 7,
@@ -178,7 +178,7 @@ const ViewAllProducts = () => {
         "Take control of your financial future—learn, trade, and thrive with Market Mavericks!"
         
       ],
-      price: "$499"
+      price: "₹16,499"
     },
     {
       id: 8,
@@ -203,7 +203,7 @@ const ViewAllProducts = () => {
         "Start speaking German and French with confidence—enroll today and begin your language-learning adventure!"
         
       ],
-      price: "$499"
+      price: "₹16,499"
     },
     {
       id: 9,
@@ -228,7 +228,7 @@ const ViewAllProducts = () => {
         "Take the next step in your career—embrace AI and stay future-ready! "
         
       ],
-      price: "$499"
+      price: "₹8,499"
     },
     {
       id: 10,
@@ -253,7 +253,7 @@ const ViewAllProducts = () => {
         // "Take control of your financial future—learn, trade, and thrive with Market Mavericks!"
         
       ],
-      price: "$499"
+      price: "₹6,499"
     },
     {
       id: 11,
@@ -278,7 +278,7 @@ const ViewAllProducts = () => {
         // "Take control of your financial future—learn, trade, and thrive with Market Mavericks!"
         
       ],
-      price: "$499"
+      price: "₹6,499"
     },
     {
       id: 12,
@@ -301,7 +301,7 @@ const ViewAllProducts = () => {
         "•	Enhance your career prospects in consulting, strategy, and business leadership",
         "Enroll now to sharpen your consulting skills and create real business impact"
       ],
-      price: "$499"
+      price: "₹6,499"
     },
     {
       id: 13,
@@ -326,7 +326,7 @@ const ViewAllProducts = () => {
         //"Take control of your financial future—learn, trade, and thrive with Market Mavericks!"
         
       ],
-      price: "$499"
+      price: "₹6,499"
     },
     {
       id: 14,
@@ -351,7 +351,7 @@ const ViewAllProducts = () => {
         // "Take control of your financial future—learn, trade, and thrive with Market Mavericks!"
         
       ],
-      price: "$499"
+      price: "₹6,499"
     }
   ];
 

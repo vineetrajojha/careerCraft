@@ -30,7 +30,7 @@ const ProductSection = () => {
         "5.	Practical & Actionable Knowledge – Walk away with skills you can immediately apply.",
         "Take your creativity to the next level—transform images into art with Photoshop!"
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 2,
@@ -54,7 +54,7 @@ const ProductSection = () => {
         "5.	Practical & Actionable Knowledge – Walk away with strategies you can implement immediately.",
         "Take the first step toward building your dream business—enroll now!"
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 3,
@@ -78,7 +78,7 @@ const ProductSection = () => {
         "5.	Practical & Actionable Takeaways – Walk away with strategies you can apply immediately."
         
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 4,
@@ -103,7 +103,7 @@ const ProductSection = () => {
         "Unlock the power of data—start your journey into data science today!"
         
       ],
-      price: "$499"
+      price: "₹8,499"
     },
     {
       id: 5,
@@ -128,7 +128,7 @@ const ProductSection = () => {
         "Transform the way you develop—unlock the potential of AI in app and web development today!"
         
       ],
-      price: "$499"
+      price: "₹11,499"
     },
     {
       id: 6,
@@ -153,7 +153,7 @@ const ProductSection = () => {
         "Unlock the full potential of AI—learn the science of effective prompting today!"
         
       ],
-      price: "$499"
+      price: "₹8,499"
     }
   ];
 
