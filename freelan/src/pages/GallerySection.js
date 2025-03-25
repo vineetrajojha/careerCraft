@@ -52,23 +52,25 @@ const handleMouseLeave = (e) => {
                         >
                             <div className="group bg-white rounded-xl border-2 border-[#E6A06C] p-3 sm:p-4 w-[36rem] h-[22rem] flex items-center justify-center shadow-lg transition-transform duration-300 hover:shadow-xl relative transform-style-3d">
   
-  {/* Front Side (Image) */}
-  <div className="absolute inset-0 w-full h-full backface-hidden flex items-center justify-center">
-    <img
-      src={collab}
-      alt={`Collab Logo ${(index % originalCollabs.length) + 1}`}
-      className="w-full h-full object-contain rounded-xl"
-    />
-  </div>
+                        {/* Front Side (Image) */}
+                        <div className="absolute inset-0 w-full h-full backface-hidden flex items-center justify-center">
+                          <img
+                            src={collab}
+                            alt={`Collab Logo ${(index % originalCollabs.length) + 1}`}
+                            className="w-full h-full object-contain rounded-xl"
+                          />
+                        </div>
 
-  {/* Back Side (Text) - FIXED MIRRORING */}
-  <div className="absolute inset-0 w-full h-full bg-black bg-opacity-50 text-white text-lg font-bold flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100 transform rotate-y-180">
-    <div className="transform rotate-y-180">
-      {index === 0 ? "Collaboration with MASQ and Career Craft" : "Collaboration with IIM Nagpur and Career Craft"}
-    </div>
-  </div>
+                        {/* Back Side (Text) - ADVANCED MIRRORING FIX */}
+                        <div className="absolute inset-0 w-full h-full bg-black bg-opacity-50 text-white text-lg font-bold flex items-center justify-center opacity-0 transition-opacity duration-300 hover:opacity-100 backface-hidden rotate-y-180">
+                          <div className="p-4 text-center transform rotate-y-180 scale-x-[-1]">
+                            {index === 0 
+                              ? "Career Craft, in partnership with MASQ, conducted a three-week consulting workshop for 150+ students, led by industry experts and IIM alumni. The program received an overwhelming response, strengthening Career Craft's mission to equip future leaders with industry-relevant skills." 
+                              : "Career Craft conducted a two-week consulting workshop for 200+ IIM Nagpur students, receiving an overwhelmingly positive response. This collaboration strengthens Career Craft's presence in top B-schools and reinforces its commitment to bridging academia and industry."}
+                          </div>
+                        </div>
 
-</div>
+                        </div>
                         </div>
                     ))}
                 </div>

@@ -273,6 +273,35 @@ const Main = () => {
               </div>
             </div>
 
+            <div className="space-y-16">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FaBrain className="text-4xl text-[#4A3F35]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">India's First to ....</h3>
+                  <p className="text-[#4A3F35]">
+                  India’s first platform to offer job opportunities post upskilling.
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+
+            <div className="space-y-16">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FaUserTie className="text-4xl text-[#4A3F35]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Best in the Industry</h3>
+                  <p className="text-[#4A3F35]">
+                  Best in the industry to facilitate Artificial Intelligence powered learning 
+                  </p>
+                </div>
+              </div>
+            </div>
+
             
           </div>
         </section>

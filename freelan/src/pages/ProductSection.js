@@ -167,7 +167,7 @@ const ProductSection = () => {
 
   return (
     <div className="bg-white py-12 sm:py-16 px-4 font-outfit">
-      <div className="container mx-auto">
+      <div className="container">
         <h2 className="text-[#9C4A1A] text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 sm:mb-16">
           Our Products
         </h2>
@@ -195,6 +195,9 @@ const ProductSection = () => {
                 </h3>
                 <p className="text-white text-sm sm:text-base mb-4 sm:mb-6 flex-grow">
                   {product.description}
+                </p>
+                <p className="text-white text-sm sm:text-base flex-grow">
+                  {product.price}
                 </p>
 
                 <div className="flex items-center justify-between">
