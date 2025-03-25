@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectLoggedInUser } from '../auth/authSlice';
+import { Menu, Transition } from '@headlessui/react';
+import { signOutAsync } from '../auth/authSlice';
+
+// User navigation items for the dropdown menu
+const userNavigation = [
+  { name: 'My Profile', link: '/profile', icon: <FaUser className="mr-2" /> },
+  { name: 'My Orders', link: '/my-orders', icon: <FaShoppingCart className="mr-2" /> },
+  { name: 'Sign out', link: '#', action: 'signout', icon: <FaSignOutAlt className="mr-2" /> },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
 const Navbar = ({ scrollToFaqSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const isLoggedIn = Boolean(user);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSignOut = () => {
+    dispatch(signOutAsync());
   };
 
   return (
@@ -82,13 +100,57 @@ const Navbar = ({ scrollToFaqSection }) => {
                 >
                   <FaShoppingCart className="text-2xl" />
                 </Link>
-                <Link
-                  to="/profile"
-                  className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300 flex items-center"
-                >
-                  <FaUser className="text-xl mr-1" />
-                  <span className="hidden lg:inline">My Profile</span>
-                </Link>
+                
+                {/* NEW: Profile Dropdown Menu */}
+                <Menu as="div" className="relative ml-4">
+                  <div>
+                    <Menu.Button className="flex items-center text-[#E67E22] hover:text-[#d67118] transition-colors duration-300">
+                      <FaUser className="text-xl mr-1" />
+                      <span className="hidden lg:inline">My Profile</span>
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      {userNavigation.map((item) => (
+                        <Menu.Item key={item.name}>
+                          {({ active }) => (
+                            item.action === 'signout' ? (
+                              <button
+                                onClick={handleSignOut}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'flex w-full items-center px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {item.icon}
+                                {item.name}
+                              </button>
+                            ) : (
+                              <Link
+                                to={item.link}
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'flex items-center px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {item.icon}
+                                {item.name}
+                              </Link>
+                            )
+                          )}
+                        </Menu.Item>
+                      ))}
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </>
             )}
           </div>
@@ -110,14 +172,35 @@ const Navbar = ({ scrollToFaqSection }) => {
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
           <button onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
           <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
+          
           {isLoggedIn && (
             <>
               <Link to="/cart" className="text-black px-3 py-1 hover:text-gray-700 flex items-center">
                 <FaShoppingCart className="mr-2" /> Cart
               </Link>
-              <Link to="/profile" className="text-black px-3 py-1 hover:text-gray-700 flex items-center">
-                <FaUser className="mr-2" /> My Profile
-              </Link>
+              
+              {/* Mobile Profile Menu Items */}
+              <div className="border-t border-gray-300 mt-2 pt-2">
+                {userNavigation.map((item) => (
+                  item.action === 'signout' ? (
+                    <button
+                      key={item.name}
+                      onClick={handleSignOut}
+                      className="text-black px-3 py-1 hover:text-gray-700 flex items-center w-full text-left"
+                    >
+                      {item.icon} {item.name}
+                    </button>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      to={item.link}
+                      className="text-black px-3 py-1 hover:text-gray-700 flex items-center"
+                    >
+                      {item.icon} {item.name}
+                    </Link>
+                  )
+                ))}
+              </div>
             </>
           )}
         </div>
