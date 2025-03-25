@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Footer from '../features/common/Footer';
 import { useLocation } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import about1 from '../features/common/images/about1.png';
 import about2 from '../features/common/images/about2.png';
 
@@ -28,11 +28,11 @@ export const Navbar = ({ isLoggedIn }) => {
   };
 
   return (
-    <nav className="bg-white  p-4 mx-auto w-full font-outfit">
+    <nav className="bg-white p-4 mx-auto w-full font-outfit">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo Section */}
         <div className="flex items-center">
-          <div className="-ml-6 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
+          <div className="-ml-6 h-14 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
             <Link to="/">
               <div className="flex items-center">
                 <img src="/logo1.png" className="h-6 mr-2" alt="Career Craft Icon" />
@@ -43,7 +43,7 @@ export const Navbar = ({ isLoggedIn }) => {
         
         {/* Navigation Links */}
         <div className="hidden md:flex items-center -mr-4">
-          <div className="bg-[#F8E5D8] rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
+          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -91,12 +91,21 @@ export const Navbar = ({ isLoggedIn }) => {
               Career Craft Campus
             </Link>
             {isLoggedIn && (
-              <Link
-                to="/cart"
-                className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
-              >
-                <FaShoppingCart className="text-2xl" />
-              </Link>
+              <>
+                <Link
+                  to="/cart"
+                  className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
+                >
+                  <FaShoppingCart className="text-2xl" />
+                </Link>
+                <Link
+                  to="/profile"
+                  className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300 flex items-center"
+                >
+                  <FaUser className="text-xl mr-1" />
+                  <span className="hidden lg:inline">My Profile</span>
+                </Link>
+              </>
             )}
           </div>
         </div>
@@ -117,6 +126,16 @@ export const Navbar = ({ isLoggedIn }) => {
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
           <Link to="/faq" className="text-black px-3 py-1 hover:text-gray-700">FAQs</Link>
           <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
+          {isLoggedIn && (
+            <>
+              <Link to="/cart" className="text-black px-3 py-1 hover:text-gray-700 flex items-center">
+                <FaShoppingCart className="mr-2" /> Cart
+              </Link>
+              <Link to="/profile" className="text-black px-3 py-1 hover:text-gray-700 flex items-center">
+                <FaUser className="mr-2" /> My Profile
+              </Link>
+            </>
+          )}
         </div>
       )}
     </nav>
@@ -125,7 +144,7 @@ export const Navbar = ({ isLoggedIn }) => {
 
 const About = () => (
   <div className="bg-white">
-    <Navbar />
+    <Navbar isLoggedIn={true} />
     <div className="container mx-auto px-4 py-12 max-w-7xl">
       {/* About Us Section */}
       <h1 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center"><span className="text-[#9C4A1A]">About</span> Us</h1>
