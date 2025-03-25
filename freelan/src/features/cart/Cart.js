@@ -7,12 +7,13 @@ import {
   selectItems,
   updateCartAsync,
 } from './cartSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import Modal from '../common/Modal';
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const items = useSelector(selectItems);
   const status = useSelector(selectCartStatus);
@@ -20,9 +21,16 @@ export default function Cart() {
   const [openModal, setOpenModal] = useState(null);
 
   const totalAmount = items.reduce(
-    (amount, item) => item.product.discountPrice * item.quantity + amount,
+    (amount, item) => {
+      // Check if discountPrice exists, otherwise use price
+      const price = item.product.discountPrice || 
+                   (item.product.price && parseInt(item.product.price.replace(/[^\d]/g, ''))) || 
+                   0;
+      return price * item.quantity + amount;
+    },
     0
   );
+  
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
 
   const handleQuantity = (e, item) => {
@@ -33,22 +41,38 @@ export default function Cart() {
     dispatch(deleteItemFromCartAsync(id));
   };
 
+  const handleCheckout = () => {
+    navigate('/checkout');
+  };
+
+  // Format price correctly
+  const formatPrice = (price) => {
+    if (typeof price === 'number') {
+      return `₹${price}`;
+    }
+    // If it's already a string with currency symbol
+    if (typeof price === 'string' && price.includes('₹')) {
+      return price;
+    }
+    return `₹${price}`;
+  };
+
   return (
     <>
       {!items.length && cartLoaded && <Navigate to="/home" replace={true}></Navigate>}
 
-      <div className="bg-gray-50 min-h-screen">
-        <div className="mx-auto mt-12 max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">Your Bag</h1>
+      <div className="bg-gray-50 min-h-screen font-outfit">
+        <div className="mx-auto my-12 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-[#9C4A1A] mb-8">Your Bag</h1>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items Section */}
             <div className="lg:col-span-2">
-              <ul className="divide-y divide-gray-200">
+              <ul className="divide-y divide-gray-200 bg-white rounded-lg shadow-md p-4">
                 {items.map((item) => (
                   <li key={item.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
-                        src={item.product.thumbnail}
+                        src={item.product.thumbnail || item.product.image}
                         alt={item.product.title}
                         className="h-full w-full object-cover object-center"
                       />
@@ -57,20 +81,25 @@ export default function Cart() {
                     <div className="ml-4 flex flex-1 flex-col">
                       <div>
                         <div className="flex justify-between text-lg font-medium text-gray-900">
-                          <h3>{item.product.title}</h3>
-                          <p className="ml-4">₹{item.product.discountPrice}</p>
+                          <h3 className="text-[#9C4A1A]">{item.product.title}</h3>
+                          <p className="ml-4 text-[#C65D34]">
+                            {formatPrice(item.product.discountPrice || item.product.price)}
+                          </p>
                         </div>
-                        <p className="mt-1 text-sm text-gray-500">{item.product.brand}</p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {item.product.brand || "Workshop"}
+                        </p>
                       </div>
                       <div className="flex flex-1 items-end justify-between text-sm">
                         <div className="text-gray-500">
                           <label
-                            htmlFor="quantity"
+                            htmlFor={`quantity-${item.id}`}
                             className="inline mr-5 text-sm font-medium leading-6 text-gray-900"
                           >
                             Quantity
                           </label>
                           <select
+                            id={`quantity-${item.id}`}
                             onChange={(e) => handleQuantity(e, item)}
                             value={item.quantity}
                             className="border border-gray-300 rounded-md p-1"
@@ -86,7 +115,7 @@ export default function Cart() {
                         <div className="flex">
                           <Modal
                             title={`Delete ${item.product.title}`}
-                            message="Are you sure you want to delete this Cart item?"
+                            message="Are you sure you want to delete this item from your cart?"
                             dangerOption="Delete"
                             cancelOption="Cancel"
                             dangerAction={(e) => handleRemove(e, item.id)}
@@ -112,10 +141,10 @@ export default function Cart() {
 
             {/* Summary Section */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-lg font-bold text-gray-900 border-b pb-4">Summary</h2>
+              <h2 className="text-lg font-bold text-[#9C4A1A] border-b pb-4">Summary</h2>
               <div className="flex justify-between my-4 text-base font-medium text-gray-900">
                 <p>Subtotal</p>
-                <p>₹{totalAmount}</p>
+                <p>{formatPrice(totalAmount)}</p>
               </div>
               <div className="flex justify-between my-4 text-base font-medium text-gray-900">
                 <p>Total Items</p>
@@ -131,15 +160,18 @@ export default function Cart() {
                 <input
                   type="text"
                   id="promo-code"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#C65D34] focus:ring-[#C65D34] sm:text-sm"
                   placeholder="Enter promo code"
                 />
               </div>
               <div className="flex justify-between my-4 text-lg font-bold text-gray-900">
                 <p>Total</p>
-                <p>₹{totalAmount}</p>
+                <p>{formatPrice(totalAmount)}</p>
               </div>
-              <button className="w-full bg-indigo-600 text-white py-3 rounded-md shadow-sm hover:bg-indigo-700">
+              <button 
+                className="w-full bg-[#C65D34] text-white py-3 rounded-md shadow-sm hover:bg-[#B54D24] transition duration-300"
+                onClick={handleCheckout}
+              >
                 Pay Securely
               </button>
             </div>
@@ -150,7 +182,7 @@ export default function Cart() {
             <Link to="/home">
               <button
                 type="button"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
+                className="font-medium text-[#C65D34] hover:text-[#B54D24]"
               >
                 Continue Shopping <span aria-hidden="true">→</span>
               </button>
