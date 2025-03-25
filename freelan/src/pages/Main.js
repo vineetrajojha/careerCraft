@@ -58,7 +58,13 @@ const testimonials = [
   { name: "Himanshi Singh", text: "The range of topics covered by CareerCraft is impressive, from technical skills to soft skills. The interactive elements keep me engaged, and the feedback is constructive.", image: "/himanshi.jpg" },
   { name: "Istekhar Alam", text: "My expectations were exceeded by CareerCraft. Learning is enjoyable since the courses are well-structured and include real-world applications. Additionally, the support staff responds quickly. A must-try for individuals who are committed to improving their skills!", image: "/istekhar.jpg" },
   { name: "Ajay Pawaria", text: "The variety of courses and hands-on approach at CareerCraft set it apart. It's intuitive, effective, and helps me stay competitive in my field. The investment in my career has been worthwhile.", image: "/ajay.jpg" },
-  { name: "Saurav Kumar", text: "After a month of use, CareerCraft has really changed my life. Their hands-on activities and interactive sessions make upskilling a breeze. Strongly advised for anyone trying to grow in their field!", image: "/sourav.jpg" }
+  { name: "Saurav Kumar", text: "After a month of use, CareerCraft has really changed my life. Their hands-on activities and interactive sessions make upskilling a breeze. Strongly advised for anyone trying to grow in their field!", image: "/sourav.jpg" },
+  { name: "Aditi Sharma", text: "CareerCraft's Consulting Masterclass was a game-changer for me! The hands-on case studies, structured frameworks, and mentorship helped me crack the McKinsey interview with confidence. The program not only strengthened my analytical skills but also gave me real-world insights. Huge thanks to CareerCraft for making my dream a reality! ", image: "/" },
+  { name: "Rajat Verma", text: "Investment banking was always my passion, but I lacked direction. CareerCraft's workshop provided me with the right technical knowledge, financial modeling skills, and networking opportunities. Their mentorship played a crucial role in helping me secure a role at JP Morgan India. Grateful to CareerCraft for this incredible journey ", image: "/" },
+  { name: "Sneha Iyer", text: "Breaking into the world of Data Analytics seemed overwhelming, but CareerCraft's structured workshop made it simple. From SQL to Python and Power BI, the course covered everything I needed. The real-time projects and expert guidance helped me land a job at TCS. Thank you, CareerCraft, for making it possible ", image: "/" },
+  { name: "Manish Agarwal", text: "I always had a creative mindset, but CareerCraft's Graphic Design workshop helped me transform it into a career. Their practical approach, real-world projects, and expert mentoring boosted my skills, and now I'm working with Zomato's design team! A big thank you to CareerCraft for making this happen. ", image: "/" },
+  { name: "Aditya Singh", text: "Breaking into investment banking requires top-notch skills and industry exposure, and CareerCraft delivered both. The program's financial modeling, valuation techniques, and mentorship from real professionals helped me land my dream job at Kotak Investment Banking. Thank you, CareerCraft, for this incredible journey! ", image: "/" },
+  { name: "Arushi Mathur", text: "CareerCraft has been a game-changer for me! Their investment banking workshop provided in-depth learning, hands-on experience, and exceptional mentorship that prepared me for the real-world challenges of the industry. The structured guidance and career support ensured I landed my dream job at Goldman Sachs. I am truly grateful to CareerCraft for this life-changing opportunity. If you're looking for a program that guarantees knowledge and career success, this is the place to be!", image: "/" },
 ];
 
 
@@ -150,7 +156,8 @@ const Main = () => {
                 <span className="text-[#9C4A1A] font-extrabold">Craft</span>
               </h1>
               <p className="text-[#4A4A4A] text-lg sm:text-xl leading-relaxed max-w-xl font-outfit">
-                Take charge of your future! We empower you <br className="hidden sm:block"/> with cutting-edge skills to innovate, succeed, <br className="hidden sm:block"/> and lead New India forward.
+              Take charge of your future! We empower you <br/>with cutting-edge skills to innovate, succeed,<br/>and lead New India forward.<br/>
+                <span className='font-bold'> Crafting <span className="text-[#9C4A1A]">successful</span> careers everyday</span>
               </p>
             </div>
             <div className="lg:w-1/2 flex flex-col items-center">
