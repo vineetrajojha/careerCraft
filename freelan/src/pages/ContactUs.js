@@ -51,7 +51,7 @@ const ContactUs = () => {
                   <label className="block text-white mb-2">Email</label>
                   <input
                     type="email"
-                    placeholder="info.vbajaj@gmail.com"
+                    placeholder="admin@careercraft.site"
                     className="w-full p-2 rounded-md"
                   />
                 </div>

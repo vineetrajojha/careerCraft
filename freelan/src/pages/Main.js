@@ -17,6 +17,11 @@ import Footer from '../features/common/Footer';
 import Navbar from '../features/common/Navbar';
 import newLogo from "../features/common/images/newLogo.png"
 
+// Importing Icons 
+import { LuBrainCircuit } from "react-icons/lu";
+import { IoBriefcase } from "react-icons/io5";
+
+
 // AOS LIBRARY for effects
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
@@ -291,10 +296,10 @@ const Main = () => {
             <div className="space-y-16">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <FaBrain className="text-4xl text-[#4A3F35]" />
+                  <IoBriefcase className="text-4xl text-[#4A3F35]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">India's First to ....</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Bridging Upskilling with Job Opportunities</h3>
                   <p className="text-[#4A3F35]">
                   India’s first platform to offer job opportunities post upskilling.
                   </p>
@@ -306,10 +311,10 @@ const Main = () => {
             <div className="space-y-16">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <FaUserTie className="text-4xl text-[#4A3F35]" />
+                  <LuBrainCircuit  className="text-4xl text-[#4A3F35]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Best in the Industry</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-[#4A3F35]">Leading the Industry</h3>
                   <p className="text-[#4A3F35]">
                   Best in the industry to facilitate Artificial Intelligence powered learning 
                   </p>
