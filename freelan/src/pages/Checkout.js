@@ -11,7 +11,6 @@ import { updateUserAsync } from '../features/user/userSlice';
 import { useState } from 'react';
 import {
   createOrderAsync,
- 
   datas,
   selectCurrentOrder,
   selectStatus,
@@ -65,10 +64,33 @@ function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState(null);
 
   const handleQuantity = (e, item) => {
+    // Fetch and log product name and price
+    const productName = item.product?.title || 'Unnamed Product';
+    const productPrice = item.product?.discountPrice || item.product?.price || 0;
+    const newQuantity = +e.target.value;
+    const oldQuantity = item.quantity;
+    
+    console.log(`Checkout - Updating quantity for: ${productName}, Price: ₹${productPrice}, From: ${oldQuantity} To: ${newQuantity}`);
+    
+    // Calculate total price change
+    const priceDifference = productPrice * (newQuantity - oldQuantity);
+    console.log(`Price difference: ₹${priceDifference}, New subtotal: ₹${totalAmount + priceDifference}`);
+    
     dispatch(updateCartAsync({ id: item.id, quantity: +e.target.value }));
   };
 
   const handleRemove = (e, id) => {
+    // Find the item being removed
+    const itemToRemove = items.find(item => item.id === id);
+    if (itemToRemove) {
+      const productName = itemToRemove.product?.title || 'Unnamed Product';
+      const productPrice = itemToRemove.product?.discountPrice || itemToRemove.product?.price || 0;
+      const totalItemPrice = productPrice * itemToRemove.quantity;
+      
+      console.log(`Checkout - Removing from cart: ${productName}, Price: ₹${productPrice}, Quantity: ${itemToRemove.quantity}, Total: ₹${totalItemPrice}`);
+      console.log(`New cart total after removal: ₹${totalAmount - totalItemPrice}`);
+    }
+    
     dispatch(deleteItemFromCartAsync(id));
   };
 
@@ -84,6 +106,18 @@ function Checkout() {
 
   const handleOrder = async(e) => {
     if (selectedAddress && paymentMethod) {
+      // Log order details
+      console.log('------ Order Summary ------');
+      console.log(`Total Items: ${totalItems}, Total Amount: ₹${totalAmount}`);
+      console.log('Products ordered:');
+      items.forEach((item, index) => {
+        const productName = item.product?.title || 'Unnamed Product';
+        const productPrice = item.product?.discountPrice || item.product?.price || 0;
+        console.log(`${index+1}. ${productName} - Qty: ${item.quantity} - Price: ₹${productPrice} - Total: ₹${productPrice * item.quantity}`);
+      });
+      console.log(`Shipping Address: ${selectedAddress.name}, ${selectedAddress.street}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.pinCode}`);
+      console.log(`Payment Method: ${paymentMethod}`);
+      console.log('--------------------------');
 
       const response = await datas({
         // items,
@@ -102,7 +136,6 @@ function Checkout() {
         "handler": async function (response){
             const body = {
               ...response,
-
             }
             const res = await axios.post('/order-verify',
               body)
@@ -494,12 +527,13 @@ function Checkout() {
                           <div className="flex flex-1 items-end justify-between text-sm">
                             <div className="text-gray-500">
                               <label
-                                htmlFor="quantity"
+                                htmlFor={`quantity-${item.id}`}
                                 className="inline mr-5 text-sm font-medium leading-6 text-gray-900"
                               >
                                 Qty
                               </label>
                               <select
+                                id={`quantity-${item.id}`}
                                 onChange={(e) => handleQuantity(e, item)}
                                 value={item.quantity}
                               >

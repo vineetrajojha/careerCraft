@@ -28,7 +28,7 @@ export default function Cart() {
       setRedirectedToHome(true);
       // No need to navigate immediately, show the empty cart UI
     }
-  }, [items.length, cartLoaded]);
+  }, [items.length, cartLoaded, redirectedToHome]);
 
   const totalAmount = items.reduce(
     (amount, item) => {
@@ -55,14 +55,41 @@ export default function Cart() {
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
 
   const handleQuantity = (e, item) => {
-    dispatch(updateCartAsync({ id: item.id, quantity: +e.target.value }));
+    // Fetch and log product name and price
+    const productName = item.product?.title || 'Unnamed Product';
+    const productPrice = item.product?.discountPrice || item.product?.price || 0;
+    const newQuantity = +e.target.value;
+    const oldQuantity = item.quantity;
+    
+    console.log(`Updating quantity for: ${productName}, Price: ₹${productPrice}, From: ${oldQuantity} To: ${newQuantity}`);
+    
+    dispatch(updateCartAsync({ id: item.id, quantity: newQuantity }));
   };
 
   const handleRemove = (e, id) => {
+    // Find the item being removed
+    const itemToRemove = items.find(item => item.id === id);
+    if (itemToRemove) {
+      const productName = itemToRemove.product?.title || 'Unnamed Product';
+      const productPrice = itemToRemove.product?.discountPrice || itemToRemove.product?.price || 0;
+      
+      console.log(`Removing from cart: ${productName}, Price: ₹${productPrice}, Quantity: ${itemToRemove.quantity}`);
+    }
+    
     dispatch(deleteItemFromCartAsync(id));
   };
 
   const handleCheckout = () => {
+    // Log checkout details
+    console.log(`Proceeding to checkout with ${totalItems} items, Total Amount: ₹${totalAmount}`);
+    
+    // Log each item in checkout
+    items.forEach(item => {
+      const productName = item.product?.title || 'Unnamed Product';
+      const productPrice = item.product?.discountPrice || item.product?.price || 0;
+      console.log(`Checkout item: ${productName}, Price: ₹${productPrice}, Quantity: ${item.quantity}`);
+    });
+    
     navigate('/checkout');
   };
 
