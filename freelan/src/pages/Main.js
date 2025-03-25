@@ -7,7 +7,8 @@ import './styles.css'; // Import the CSS file for custom animations
 import { FaShoppingCart, FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
-
+import { selectItems } from '../features/cart/cartSlice';
+import { useNavigate } from 'react-router-dom';
 import ProductSection from './ProductSection';
 import FaqSection from './FaqSection';
 import MentorsSection from './MentorsSection';
@@ -68,10 +69,13 @@ const testimonials = [
 ];
 
 
+
 const Main = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const user = useSelector(selectLoggedInUser);
+  const items = useSelector(selectItems);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -93,6 +97,10 @@ const Main = () => {
   
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  const goToCart = () => {
+    navigate('/cart');
   };
 
   const [startCount, setStartCount] = useState(false);

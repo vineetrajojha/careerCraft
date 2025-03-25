@@ -1,33 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FaShoppingCart, FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartAsync } from '../features/cart/cartSlice';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 import { toast } from 'react-toastify';
 
+
 const ProductSection = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const location = useLocation();
+  const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
 
-   // Check for redirects from login page with pending cart actions
-   useEffect(() => {
-    // Check if we have returned from login page with addToCart or buyNow in state
+   // Close modal when ESC key is pressed
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) closeModal();
+    };
+    window.addEventListener('keydown', handleEsc);
+    
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  // Process any pending cart actions after login
+  useEffect(() => {
+    // Check if we're returning from login page with items to add
     if (location.state?.addToCart && user) {
       handleAddToCart(null, location.state.addToCart, true);
       
       // Clear the state to prevent duplicate actions
-      navigate(location.pathname, { replace: true });
-    } else if (location.state?.buyNow && user) {
+      navigate(location.pathname, { replace: true, state: {} });
+    } 
+    else if (location.state?.buyNow && user) {
       handleBuyNow(null, location.state.buyNow, true);
       
       // Clear the state to prevent duplicate actions
-      navigate(location.pathname, { replace: true });
+      navigate(location.pathname, { replace: true, state: {} });
     }
   }, [user, location.state]);
 
@@ -245,18 +257,23 @@ const ProductSection = () => {
         } 
       });
     } else {
-      // If user is logged in, add to cart and redirect to checkout
-      dispatch(addToCartAsync({ 
-        product: product.id, 
-        quantity: 1 
-      })).unwrap()
-        .then(() => {
-          navigate('/checkout');
-        })
-        .catch((error) => {
-          console.error('Failed to proceed to checkout:', error);
-          toast.error("Failed to process your request. Please try again.");
-        });
+      try {
+        // If user is logged in, add to cart and redirect to checkout
+        dispatch(addToCartAsync({ 
+          product: product.id, 
+          quantity: 1 
+        })).unwrap()
+          .then(() => {
+            navigate('/checkout');
+          })
+          .catch((error) => {
+            console.error('Failed to process purchase:', error);
+            toast.error("Failed to process your purchase. Please try again.");
+          });
+      } catch (error) {
+        console.error('Error during buy now:', error);
+        toast.error("Something went wrong. Please try again.");
+      }
     }
   };
 
@@ -271,7 +288,7 @@ const ProductSection = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-[#E6A06C] rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              className="bg-[#E6A06C] rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg transform transition-transform duration-300 hover:scale-105 cursor-pointer relative"
               onClick={() => handleProductClick(product)}
             >
               <div className="flex flex-col h-full">
@@ -280,34 +297,38 @@ const ProductSection = () => {
                   alt={product.title}
                   className="w-full h-auto object-cover rounded-xl sm:rounded-2xl"
                 />
-                <div className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white font-medium text-xs sm:text-sm">
-                  {product.tag}
-                </div>
+                {product.tag && (
+                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white font-medium text-xs sm:text-sm">
+                    {product.tag}
+                  </div>
+                )}
                 <div className="absolute bottom-4 right-4 w-12 h-1 bg-yellow-300 rounded-full"></div>
 
-                <h3 className="text-xl sm:text-2xl mt-3 sm:mt-4 font-bold text-white mb-2 sm:mb-4">
+                <h3 className="text-xl sm:text-2xl mt-3 sm:mt-4 font-bold text-white mb-2 sm:mb-4 line-clamp-2">
                   {product.title}
                 </h3>
-                <p className="text-white text-sm sm:text-base mb-4 sm:mb-6 flex-grow">
+                <p className="text-white text-sm sm:text-base mb-4 sm:mb-6 flex-grow line-clamp-3">
                   {product.description}
                 </p>
-                <p className="text-white text-sm sm:text-base flex-grow">
+                <p className="text-white text-sm sm:text-base font-semibold">
                   {product.price}
                 </p>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-4">
                   <button
                     className="bg-[#C65D34] text-white px-4 sm:px-6 lg:px-8 py-2 rounded-full text-sm sm:text-base hover:bg-[#B54D24] transition duration-300"
                     onClick={(e) => handleBuyNow(e, product)}
+                    aria-label="Buy now"
                   >
                     Buy now
                   </button>
-                  <div 
-                    className="text-white cursor-pointer hover:text-yellow-200 transition duration-300"
+                  <button 
+                    className="text-white p-2 rounded-full hover:bg-[#C65D34] hover:text-yellow-200 transition duration-300 flex items-center justify-center"
                     onClick={(e) => handleAddToCart(e, product)}
+                    aria-label="Add to cart"
                   >
                     <FaShoppingCart size={20} className="sm:w-6 sm:h-6" />
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -330,7 +351,8 @@ const ProductSection = () => {
                  onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={closeModal}
-                className="absolute right-4 top-4 text-gray-600 hover:text-gray-800"
+                className="absolute right-4 top-4 text-gray-600 hover:text-gray-800 p-2 bg-white bg-opacity-75 rounded-full z-10"
+                aria-label="Close"
               >
                 <FaTimes size={24} />
               </button>
@@ -340,7 +362,7 @@ const ProductSection = () => {
                   <img
                     src={selectedProduct.image}
                     alt={selectedProduct.title}
-                    className="w-full h-auto rounded-2xl"
+                    className="w-full h-auto rounded-2xl object-contain max-h-80"
                   />
                 </div>
                 
@@ -353,20 +375,21 @@ const ProductSection = () => {
                     {selectedProduct.fullDescription}
                   </p>
                   
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 mt-auto">
                     <span className="text-2xl font-bold text-[#C65D34]">
                       {selectedProduct.price}
                     </span>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 w-full sm:w-auto">
                       <button 
                         onClick={(e) => handleBuyNow(e, selectedProduct)}
-                        className="bg-[#C65D34] text-white px-8 py-2 rounded-full hover:bg-[#B54D24] transition duration-300"
+                        className="bg-[#C65D34] text-white px-8 py-2 rounded-full hover:bg-[#B54D24] transition duration-300 w-full sm:w-auto flex-1 sm:flex-none"
                       >
                         Buy now
                       </button>
                       <button
                         onClick={(e) => handleAddToCart(e, selectedProduct)}
-                        className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition-colors duration-200"
+                        className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition-colors duration-200 flex-shrink-0"
+                        aria-label="Add to cart"
                       >
                         <FaShoppingCart size={20} className="text-[#C65D34]" />
                       </button>
@@ -375,7 +398,7 @@ const ProductSection = () => {
                 </div>
               </div>
 
-              <div className="p-8 bg-gray-50 rounded-b-3xl">
+              <div className="p-8 bg-gray-50 rounded-b-3xl overflow-y-auto" style={{maxHeight: "50vh"}}>
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold text-[#9C4A1A] mb-4">
                     Product Details:

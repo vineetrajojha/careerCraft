@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectLoggedInUser } from '../auth/authSlice';
 import { Menu, Transition } from '@headlessui/react';
 import { signOutAsync } from '../auth/authSlice';
+import { selectItems } from '../cart/cartSlice';
 
 // User navigation items for the dropdown menu
 const userNavigation = [
@@ -24,6 +25,10 @@ const Navbar = ({ scrollToFaqSection }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const isLoggedIn = Boolean(user);
+  
+  // Add this to get cart items
+  const items = useSelector(selectItems);
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -93,13 +98,19 @@ const Navbar = ({ scrollToFaqSection }) => {
               Career Craft Campus
             </Link>
             {isLoggedIn && (
-              <>
-                <Link
-                  to="/cart"
-                  className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
-                >
-                  <FaShoppingCart className="text-2xl" />
-                </Link>
+               <>
+               <Link
+                 to="/cart"
+                 className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300 relative"
+               >
+                 <FaShoppingCart className="text-2xl" />
+                 {/* Add this badge for cart items count */}
+                 {items && items.length > 0 && (
+                   <span className="absolute -top-2 -right-2 bg-[#C65D34] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+                     {items.length}
+                   </span>
+                 )}
+               </Link>
                 
                 {/* NEW: Profile Dropdown Menu */}
                 <Menu as="div" className="relative ml-4">
