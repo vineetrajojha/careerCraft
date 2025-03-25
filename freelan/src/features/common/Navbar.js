@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectLoggedInUser } from '../auth/authSlice';
 
-const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
+const Navbar = ({ scrollToFaqSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const user = useSelector(selectLoggedInUser);
+  const isLoggedIn = Boolean(user);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,12 +75,21 @@ const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
               Career Craft Campus
             </Link>
             {isLoggedIn && (
-              <Link
-                to="/cart"
-                className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
-              >
-                <FaShoppingCart className="text-2xl" />
-              </Link>
+              <>
+                <Link
+                  to="/cart"
+                  className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300"
+                >
+                  <FaShoppingCart className="text-2xl" />
+                </Link>
+                <Link
+                  to="/profile"
+                  className="ml-4 text-[#E67E22] hover:text-[#d67118] transition-colors duration-300 flex items-center"
+                >
+                  <FaUser className="text-xl mr-1" />
+                  <span className="hidden lg:inline">My Profile</span>
+                </Link>
+              </>
             )}
           </div>
         </div>
@@ -97,6 +110,16 @@ const Navbar = ({ isLoggedIn, scrollToFaqSection }) => {
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
           <button onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
           <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
+          {isLoggedIn && (
+            <>
+              <Link to="/cart" className="text-black px-3 py-1 hover:text-gray-700 flex items-center">
+                <FaShoppingCart className="mr-2" /> Cart
+              </Link>
+              <Link to="/profile" className="text-black px-3 py-1 hover:text-gray-700 flex items-center">
+                <FaUser className="mr-2" /> My Profile
+              </Link>
+            </>
+          )}
         </div>
       )}
     </nav>
