@@ -51,13 +51,13 @@ const ProductSection = () => {
     },
     {
       id: 2,
-      thumbnail: "/products/The-Entrepreneur-Playbook.png", 
-      title: "The Entrepreneur's Playbook: Mastering Business Creation and Growth",
-      description: "A comprehensive workshop designed to guide aspiring entrepreneurs through the fundamentals of building and scaling a successful business.",
-      discountPrice: 11499,
-      price: 14999,
-      brand: "Entrepreneurship Workshop",
-      image: "/products/The-Entrepreneur-Playbook.png"
+      description: "Elevate your career with our expert-led Career Craft Course Bundle, designed to help you succeed in today's competitive world. Master personal finance to secure your fut...",
+      discountPrice: 8499,
+      price: 11999,
+      thumbnail: "/products/AI-for-professionals.png", 
+      title: "AI for professionals",
+      brand: "AI for professionals Workshop",
+      image: "/products/ai-for-professionals.png"
     },
     {
       id: 3,
