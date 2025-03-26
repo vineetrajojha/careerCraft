@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="bg-[#ffffff] pt-16 px-4">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center">
           {/* Left Section */}
           <div className="space-y-6 ml-20">
             <div>
@@ -16,6 +16,15 @@ function Footer() {
                 Sign Up Now
               </button>
             </Link>
+          </div>
+
+          {/* Middle Section */}
+          <div className="space-y-2">
+            <div className="font-medium">
+            <p className="m-2 leading-5">6th floor, A-40 IThum Tower,<br/>Noida Sector-62,<br/>Uttar Pradesh -201309</p>
+            <p className="m-2">Phone Number - +91-9031539131</p>
+            <p className="m-2">Email at- admin@careercraft.site</p>
+            </div>
           </div>
 
           {/* Right Section */}

@@ -37,7 +37,7 @@ const ViewAllProducts = () => {
       id: 2,
       image: "/products/The-Entrepreneur-Playbook.png",
       title: "The Entrepreneur’s Playbook: Mastering Business Creation and Growth",
-      description: "A comprehensive workshop designed to guide aspiring entrepreneurs through the fundamentals of building and scaling a successful business.",
+      description: "A comprehensive workshop designed to guide aspiring entrepreneurs through the fundamentals of building and scaling a successful business. Learn essential strategies for market research, business ... ",
       fullDescription: "A comprehensive workshop designed to guide aspiring entrepreneurs through the fundamentals of building and scaling a successful business. Learn essential strategies for market research, business modeling, funding, and growth from industry experts. Perfect for students and professionals looking to turn ideas into thriving ventures.",
       productDetails: [
         "What Can You Expect from The Entrepreneur’s Playbook: Mastering Business Creation and Growth Workshop?",
@@ -61,7 +61,7 @@ const ViewAllProducts = () => {
       id: 3,
       image: "/products/the-influencer-playbook.png",
       title: "The Influencer’s Playbook: Build, Brand, and Influence",
-      description: "A power-packed workshop designed to help content creators establish a strong brand, engage audiences, and monetize their work. ",
+      description: "A power-packed workshop designed to help content creators establish a strong brand, engage audiences, and monetize their work. Learn from industry experts how to create impactful content, grow your online presence and turn creativity into influence.",
       fullDescription: "A power-packed workshop designed to help content creators establish a strong brand, engage audiences, and monetize their work. Learn from industry experts how to create impactful content, grow your online presence, and turn creativity into influence. Ideal for aspiring creators and professionals looking to stand out in the digital world.",
       productDetails: [
         "What Can You Expect from The Influencer’s Playbook: Build, Brand, and Influence Workshop?",
@@ -85,7 +85,7 @@ const ViewAllProducts = () => {
       id: 4,
       image: "/products/data-science.png",
       title: "Data Science 360: A Complete Journey into Data-Driven Excellence",
-      description: "Master the fundamentals of data science with this all-inclusive workshop. Learn data analysis, machine learning, and visualization techniques from industry experts.",
+      description: "Master the fundamentals of data science with this all-inclusive workshop. Learn data analysis, machine learning, and visualization techniques from industry...",
       fullDescription: "Master the fundamentals of data science with this all-inclusive workshop. Learn data analysis, machine learning, and visualization techniques from industry experts. Perfect for students and professionals looking to build a strong foundation in data-driven decision-making.",
       productDetails: [
         "What Can You Expect from Data Science 360: A Complete Journey into Data-Driven Excellence Workshop?",
@@ -110,7 +110,7 @@ const ViewAllProducts = () => {
       id: 5,
       image: "/products/intelligent-AI-app-and-web.png",
       title: "Intelligent Creation: Master AI-Driven App and Web Development",
-      description: "Explore the power of AI in app and web development with this expert-led workshop.",
+      description: "Explore the power of AI in app and web development with this expert-led workshop. Learn how to integrate AI tools, enhance functionality, and build intelligent digital... ",
       fullDescription: "Explore the power of AI in app and web development with this expert-led workshop. Learn how to integrate AI tools, enhance functionality, and build intelligent digital solutions. Ideal for developers, students, and tech enthusiasts looking to stay ahead in the ever-evolving tech landscape.",
       productDetails: [
         "What Can You Expect from Intelligent Creation: Master AI-Driven App and Web Development Workshop?",
@@ -135,7 +135,7 @@ const ViewAllProducts = () => {
       id: 6,
       image: "/products/Prompting-with-Precision.png",
       title: "Prompting with Precision: A Complete Guide to AI Communication",
-      description: "Learn how to communicate effectively with AI and get the best results. This workshop covers prompt engineering, response optimization, and practical applications for content creation and automation.",
+      description: "Learn how to communicate effectively with AI and get the best results. This workshop covers prompt engineering, response optimization, and practical applications for...",
       fullDescription: "Learn how to communicate effectively with AI and get the best results. This workshop covers prompt engineering, response optimization, and practical applications for content creation and automation. Perfect for professionals, creators, and tech enthusiasts eager to leverage AI to its full potential.",
       productDetails: [
         "What Can You Expect from Prompting with Precision: A Complete Guide to AI Communication Workshop?",
@@ -235,7 +235,7 @@ const ViewAllProducts = () => {
       id: 10,
       image: "/products/Investment-Banking.jpeg",
       title: "Investment Banking Unlocked: Master the World of High Finance",
-      description: "Step into the fast-paced world of investment banking with this expert-led workshop",
+      description: "Step into the fast-paced world of investment banking with this expert-led workshop. Learn financial modeling, valuation techniques, and deal structuring from industry professionals.",
       fullDescription: "Step into the fast-paced world of investment banking with this expert-led workshop. Learn financial modeling, valuation techniques, and deal structuring from industry professionals. Perfect for students and professionals looking to break into high finance and gain a competitive edge.",
       productDetails: [
         "Core financial concepts including M&A, IPOs, LBOs, and corporate finance strategies",
@@ -260,7 +260,7 @@ const ViewAllProducts = () => {
       id: 11,
       image: "/products/Innovate-Deliver.png",
       title: "Innovate & Deliver: The Complete Product Management Guide",
-      description: "Master the art of building and scaling successful products. ",
+      description: "Master the art of building and scaling successful products. This workshop covers product strategy, user research, roadmap planning, and go-to-market execution, guided by industry experts.",
       fullDescription: "GMaster the art of building and scaling successful products. This workshop covers product strategy, user research, roadmap planning, and go-to-market execution, guided by industry experts. Ideal for aspiring and current product managers looking to drive innovation and deliver impactful solutions.",
       productDetails: [
         "•	Fundamentals of product strategy and market positioning",
@@ -283,7 +283,7 @@ const ViewAllProducts = () => {
     },
     {
       id: 12,
-      image: "/products/.png",
+      image: "/products/Consulting-Unleashed.jpeg",
       title: "Consulting Unleashed: From Problem-Solving to Value Creation",
       description: "Develop the mindset and skills of a top-tier consultant. This workshop dives into structured problem-solving, strategic thinking, and client management, equipping",
       fullDescription: "Develop the mindset and skills of a top-tier consultant. This workshop dives into structured problem-solving, strategic thinking, and client management, equipping you with tools to drive business impact. Ideal for students and professionals looking to break into consulting or enhance their analytical approach.",
@@ -333,7 +333,7 @@ const ViewAllProducts = () => {
       id: 14,
       image: "/products/AI-for-professionals.png",
       title: "AI for professionals",
-      description: "Stay ahead in your industry with this expert-led workshop on leveraging AI for efficiency and innovation. Learn how to integrate AI tools into your workflow, automate tasks, and make ",
+      description: "Stay ahead in your industry with this expert-led workshop on leveraging AI for efficiency and innovation. Learn how to integrate AI tools into your workflow, automate tasks, and make  data-driven decisions to ",
       fullDescription: "Stay ahead in your industry with this expert-led workshop on leveraging AI for efficiency and innovation. Learn how to integrate AI tools into your workflow, automate tasks, and make data-driven decisions to enhance productivity. Ideal for professionals across various fields looking to harness the power of AI in their careers.",
       productDetails: [
         "How to integrate AI tools into your daily workflow for increased efficiency",
