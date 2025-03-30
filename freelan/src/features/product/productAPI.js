@@ -58,7 +58,7 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
 
   return new Promise(async (resolve) => {
     const response = await fetch(
-      '/products?' + queryString
+      '/products2?' + queryString
     );
     const data = await response.json();
     const totalItems = await response.headers.get('X-Total-Count');
