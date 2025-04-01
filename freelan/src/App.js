@@ -38,7 +38,36 @@ import ContactUs from "./pages/ContactUs";
 import ProductList from './features/product/components/ProductList';
 import FaqSection from "./pages/FaqSection"
 import MentorsPage from './pages/MentorsPage';
+```javascript
+function App() {
+  const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
+  const userChecked = useSelector(selectUserChecked);
 
+  useEffect(() => {
+    dispatch(checkAuthAsync());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchItemsByUserIdAsync());
+      dispatch(fetchLoggedInUserAsync());
+    }
+  }, [dispatch, user]);
+
+  return (
+    <div className="App">
+      {userChecked && (
+        <Provider template={AlertTemplate} {...options}>
+          <RouterProvider router={router} />
+        </Provider>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
 
 const options = {
   timeout: 5000,
