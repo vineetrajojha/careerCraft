@@ -21,9 +21,9 @@ function Footer() {
           {/* Middle Section */}
           <div className="space-y-2">
             <div className="font-medium">
-            <p className="m-2 leading-5">6th floor, A-40 IThum Tower,<br/>Noida Sector-62,<br/>Uttar Pradesh -201309</p>
-            <p className="m-2">Phone Number - +91-9031539131</p>
-            <p className="m-2">Email at- admin@careercraft.site</p>
+            <p className="m-2 leading-5">6th floor, A-40 IThum Tower,<br/>Noida Sector-62,<br/>Uttar Pradesh, 201309</p>
+            <p className="m-2">Phone Number: +91-9031539131</p>
+            <p className="m-2">Email: admin@careercraft.site</p>
             </div>
           </div>
 
@@ -58,7 +58,7 @@ function Footer() {
                   <a href="https://www.instagram.com/careercraft6" className="block underline text-[#4A3F35] hover:text-[#9C4A1A] flex items-center gap-2">
                     <FaInstagram /> CareerCraft6
                   </a>
-                  <a href="https://www.linkedin.com/company/career-craft" className="block underline text-[#4A3F35] hover:text-[#9C4A1A] flex items-center gap-2">
+                  <a href="https://www.linkedin.com/company/career-craft6" className="block underline text-[#4A3F35] hover:text-[#9C4A1A] flex items-center gap-2">
                     <FaLinkedin /> Career Craft
                   </a>
                 </div>
