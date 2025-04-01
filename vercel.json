@@ -1,9 +1,0 @@
-{
-    "version": 2,
-    "buildCommand": "cd freelan && npm install --legacy-peer-deps && npm run build",
-    "outputDirectory": "freelan/build",
-    "routes": [
-      { "src": "/api/(.*)", "dest": "/freelan-back/api/$1" },
-      { "src": "/(.*)", "dest": "/freelan/build/$1" }
-    ]
-  }
