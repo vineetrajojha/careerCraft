@@ -88,6 +88,7 @@ const Main = () => {
   const targetSectionRef = useRef(null);
   const targetFaqSection = useRef(null);
   const topRef = useRef(null);
+  const mentorsSectionRef = useRef(null);
 
   const scrollToTop = ()=>{
     topRef.current.scrollIntoView({behavior : 'smooth'});
@@ -98,6 +99,10 @@ const Main = () => {
   
   const scrollToSection = () => {
     targetSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  const scrollToMentorsSection = () => {
+    mentorsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   
   const toggleFAQ = (index) => {
@@ -155,7 +160,7 @@ const Main = () => {
 
       
         {/* Navbar */}
-        <Navbar isLoggedIn={!!user} scrollToFaqSection={scrollToFaqSection} />
+        <Navbar isLoggedIn={!!user} scrollToFaqSection={scrollToFaqSection} scrollToProductsSection={scrollToSection} scrollToMentorsSection={scrollToMentorsSection} />
        
 
         {/* Header */}
@@ -334,7 +339,7 @@ const Main = () => {
         </div>
         </div>
         <div data-aos="fade-up">
-        <div>
+        <div ref={mentorsSectionRef}>
           {MentorsSection && <MentorsSection />}
         </div>
         </div>

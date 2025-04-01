@@ -19,7 +19,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const Navbar = ({ scrollToFaqSection }) => {
+const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
@@ -63,6 +63,18 @@ const Navbar = ({ scrollToFaqSection }) => {
             >
               Home
             </NavLink>
+            <button
+              onClick={scrollToProductsSection}
+              className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
+            >
+              Products
+            </button>
+            <button
+              onClick={scrollToMentorsSection}
+              className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
+            >
+              Mentors
+            </button>
             <NavLink
               to="/about"
               className={({ isActive }) =>
@@ -177,6 +189,8 @@ const Navbar = ({ scrollToFaqSection }) => {
       {isMenuOpen && (
         <div className="md:hidden mt-4 space-y-2 flex flex-col bg-[#F8E5D8] rounded-lg p-4 font-outfit">
           <Link to="/" className="text-black px-3 py-1 hover:text-gray-700">Home</Link>
+          <button onClick={scrollToProductsSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Products</button>
+          <button onClick={scrollToMentorsSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Mentors</button>
           <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
           <button onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
