@@ -40,9 +40,10 @@ const ProductSection = () => {
     }
   }, [user, location.state]);
 
+
   // const products = [
   //   {
-  //     id: 1,
+  //     id: 67eb79c7492aec1e72c44f50,
   //     thumbnail: "/products/adobe.png",
   //     title: "Adobe Alchemy: Turn Images into Art with Photoshop",
   //     description: "A hands-on workshop designed to equip you with essential editing and design skills using industry-standard tools.",
@@ -52,7 +53,7 @@ const ProductSection = () => {
   //     image: "/products/adobe.png"
   //   },
   //   {
-  //     id: 2,
+  //     id: 67eb7bba2bba14a277cc4db1,
   //     description: "Elevate your career with our expert-led Career Craft Course Bundle, designed to help you succeed in today's competitive world. Master personal finance to secure your fut...",
   //     discountPrice: 8499,
   //     price: 11999,
@@ -62,7 +63,7 @@ const ProductSection = () => {
   //     image: "/products/ai-for-professionals.png"
   //   },
   //   {
-  //     id: 3,
+  //     id: 67eb7dc72bba14a277cc4db4,
   //     thumbnail: "/products/the-influencer-playbook.png",
   //     title: "The Influencer's Playbook: Build, Brand, and Influence",
   //     description: "A power-packed workshop designed to help content creators establish a strong brand, engage audiences, and monetize their work.",
@@ -72,7 +73,7 @@ const ProductSection = () => {
   //     image: "/products/the-influencer-playbook.png"
   //   },
   //   {
-  //     id: 4,
+  //     id: 67eb7df22bba14a277cc4db5,
   //     thumbnail: "/products/data-science.png",
   //     title: "Data Science 360: A Complete Journey into Data-Driven Excellence",
   //     description: "Master the fundamentals of data science with this all-inclusive workshop. Learn data analysis, machine learning, and visualization techniques from industry experts.",
@@ -82,7 +83,7 @@ const ProductSection = () => {
   //     image: "/products/data-science.png"
   //   },
   //   {
-  //     id: 5,
+  //     id: 67eb7e3a2bba14a277cc4db6,
   //     thumbnail: "/products/intelligent-AI-app-and-web.png",
   //     title: "Intelligent Creation: Master AI-Driven App and Web Development",
   //     description: "Explore the power of AI in app and web development with this expert-led workshop.",
@@ -92,7 +93,7 @@ const ProductSection = () => {
   //     image: "/products/intelligent-AI-app-and-web.png"
   //   },
   //   {
-  //     id: 6,
+  //     id: 67eb7e722bba14a277cc4db7,
   //     thumbnail: "/products/Prompting-with-Precision.png",
   //     title: "Prompting with Precision: A Complete Guide to AI Communication",
   //     description: "Learn how to communicate effectively with AI and get the best results. This workshop covers prompt engineering, response optimization, and practical applications for content creation and automation.",
@@ -268,6 +269,8 @@ const ProductSection = () => {
   //           "id": "67477af036f3373d76a67858"
   //       }
   //   ]
+
+  
 
     useEffect(()=>{
       const fetchProducts = async ()=>{

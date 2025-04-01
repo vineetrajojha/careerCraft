@@ -29,7 +29,6 @@ const Navbar = ({ scrollToFaqSection }) => {
   // Add this to get cart items
   const items = useSelector(selectItems);
   
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -39,11 +38,11 @@ const Navbar = ({ scrollToFaqSection }) => {
   };
 
   return (
-    <nav className="bg-white shadow-sm p-4 mx-auto w-full font-outfit">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-white shadow-sm p-4 w-full font-outfit">
+      <div className="flex justify-between items-center w-full">
         {/* Logo Section */}
         <div className="flex items-center">
-          <div className="-ml-6 h-14 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
+          <div className="h-14 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-6 pr-24">
             <Link to="/">
               <div className="flex items-center">
                 <img src="/logo1.png" className="h-7 mr-2" alt="Career Craft Icon" />
@@ -53,14 +52,14 @@ const Navbar = ({ scrollToFaqSection }) => {
         </div>
         
         {/* Navigation Links */}
-        <div className="hidden md:flex items-center -mr-4">
+        <div className="hidden md:flex items-center">
           <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+                  ? "text-black font-medium px-6 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
               }
             >
               Home
@@ -69,8 +68,8 @@ const Navbar = ({ scrollToFaqSection }) => {
               to="/about"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+                  ? "text-black font-medium px-6 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
               }
             >
               About Us
@@ -79,15 +78,15 @@ const Navbar = ({ scrollToFaqSection }) => {
               to="/contact"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
+                  ? "text-black font-medium px-6 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
               }
             >
               Contact Us
             </NavLink>
             <button
               onClick={scrollToFaqSection}
-              className="text-black hover:text-gray-700 px-8 py-2 cursor-pointer font-outfit"
+              className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
             >
               FAQs
             </button>
@@ -112,7 +111,7 @@ const Navbar = ({ scrollToFaqSection }) => {
                  )}
                </Link>
                 
-                {/* NEW: Profile Dropdown Menu */}
+                {/* Profile Dropdown Menu */}
                 <Menu as="div" className="relative ml-4">
                   <div>
                     <Menu.Button className="flex items-center text-[#E67E22] hover:text-[#d67118] transition-colors duration-300">

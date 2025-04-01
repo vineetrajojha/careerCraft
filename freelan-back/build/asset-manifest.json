@@ -1,20 +1,34 @@
 {
   "files": {
-    "main.css": "/static/css/main.65dbed7d.css",
-    "main.js": "/static/js/main.49fc06cc.js",
+    "main.css": "/static/css/main.de2e264f.css",
+    "main.js": "/static/js/main.2c701c44.js",
     "static/js/787.c875205c.chunk.js": "/static/js/787.c875205c.chunk.js",
+    "static/media/about-us.png": "/static/media/about-us.f0b0c0baa9661f56acaa.png",
+    "static/media/contact-us.svg": "/static/media/contact-us.d1c8f32c2adadb4586640ae5dc647173.svg",
     "static/media/newLogo.png": "/static/media/newLogo.64a8111976a09d11db48.png",
+    "static/media/logo6.png": "/static/media/logo6.182aad691078cf1542c5.png",
+    "static/media/img1.jpg": "/static/media/img1.6364b704b7620b655895.jpg",
+    "static/media/about2.png": "/static/media/about2.025760536d5aade0639e.png",
     "static/media/logo1.jpeg": "/static/media/logo1.47be528e65bc22764252.jpeg",
+    "static/media/img2.jpg": "/static/media/img2.6618a16cb88ab5675360.jpg",
+    "static/media/logo2.png": "/static/media/logo2.8e372605fccb86f0c735.png",
+    "static/media/logo5.png": "/static/media/logo5.eb03ef26f7e2c961efa7.png",
+    "static/media/logo4.png": "/static/media/logo4.9647e159657b1d8b3024.png",
+    "static/media/logo3.png": "/static/media/logo3.18c7df364914015f679d.png",
+    "static/media/logo1.png": "/static/media/logo1.db32f7922e1118a36f80.png",
+    "static/media/iim-b.jpg": "/static/media/iim-b.ab1084bd1ce6bfc2f817.jpg",
+    "static/media/niims-logo.png": "/static/media/niims-logo.1c39d5e23a4d459bbe6f.png",
     "static/media/logo2.jpeg": "/static/media/logo2.5b746a374d23ae59d864.jpeg",
+    "static/media/logo7.png": "/static/media/logo7.72942f545bf1daec2c3f.png",
     "static/media/logo3.jpeg": "/static/media/logo3.70e27cc54ce7563e8004.jpeg",
     "static/media/logo4.jpeg": "/static/media/logo4.ce41b835ee866c487ef3.jpeg",
     "index.html": "/index.html",
-    "main.65dbed7d.css.map": "/static/css/main.65dbed7d.css.map",
-    "main.49fc06cc.js.map": "/static/js/main.49fc06cc.js.map",
+    "main.de2e264f.css.map": "/static/css/main.de2e264f.css.map",
+    "main.2c701c44.js.map": "/static/js/main.2c701c44.js.map",
     "787.c875205c.chunk.js.map": "/static/js/787.c875205c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.65dbed7d.css",
-    "static/js/main.49fc06cc.js"
+    "static/css/main.de2e264f.css",
+    "static/js/main.2c701c44.js"
   ]
 }
