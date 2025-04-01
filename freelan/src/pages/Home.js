@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper components
 import { Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
 import 'swiper/css/bundle'; // Import Swiper styles
 import './styles.css'; // Import the CSS file for custom animations
-import { FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
+import { FaUserTie,FaAward, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 
@@ -343,123 +343,143 @@ const Main = () => {
         
         
         {/* Testimonials */}
-        <div data-aos="fade-up">
-        <section className="bg-white py-20 font-outfit overflow-hidden">
-          <div className="container mx-auto px-4">
-            <h2 className="text-center mb-16 text-5xl font-bold">
-              <span className="text-[#4A3F35]">What Our </span>
-              <span className="text-[#9C4A1A]">Students </span>
-              <span className="text-[#4A3F35]">Say</span>
-            </h2>
+<div data-aos="fade-up">
+<section className="bg-white py-20 font-outfit overflow-hidden">
+  <div className="container mx-auto px-4">
+    <h2 className="text-center mb-16 text-5xl font-bold">
+      <span className="text-[#4A3F35]">What Our </span>
+      <span className="text-[#9C4A1A]">Students </span>
+      <span className="text-[#4A3F35]">Say</span>
+    </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {/* First Column */}
-              <div className="space-y-8">
-                <Swiper
-                  direction="vertical"
-                  modules={[Autoplay]}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    reverseDirection: false
-                  }}
-                  loop={true}
-                  speed={1000}
-                  slidesPerView={2}
-                  spaceBetween={24}
-                  className="h-[700px]"
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={`col1-${index}`}>
-                      <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
-                        <div className="flex flex-col items-center">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-16 h-16 rounded-full mb-4 object-cover"
-                          />
-                          <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
-                          <p className="text-white text-sm mb-4">{testimonial.text}</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-
-              {/* Second Column */}
-              <div className="space-y-8">
-                <Swiper
-                  direction="vertical"
-                  modules={[Autoplay]}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    reverseDirection: true,
-                    initialSlide: 2
-                  }}
-                  loop={true}
-                  speed={1000}
-                  slidesPerView={2}
-                  spaceBetween={24}
-                  className="h-[700px]"
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={`col2-${index}`}>
-                      <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
-                        <div className="flex flex-col items-center">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-16 h-16 rounded-full mb-4 object-cover"
-                          />
-                          <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
-                          <p className="text-white text-sm mb-4">{testimonial.text}</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-
-              {/* Third Column */}
-              <div className="space-y-8">
-                <Swiper
-                  direction="vertical"
-                  modules={[Autoplay]}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    reverseDirection: false,
-                    initialSlide: 4
-                  }}
-                  loop={true}
-                  speed={1000}
-                  slidesPerView={2}
-                  spaceBetween={24}
-                  className="h-[700px]"
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <SwiperSlide key={`col3-${index}`}>
-                      <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
-                        <div className="flex flex-col items-center">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-16 h-16 rounded-full mb-4 object-cover"
-                          />
-                          <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
-                          <p className="text-white text-sm mb-4">{testimonial.text}</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+    {/* Mobile View - Limited Testimonials */}
+    <div className="md:hidden">
+      <div className="space-y-6">
+        {testimonials.slice(0, 6).map((testimonial, index) => (
+          <div key={`mobile-${index}`} className="bg-[#E6A06C] rounded-2xl p-6">
+            <div className="flex flex-col items-center">
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-16 h-16 rounded-full mb-4 object-cover"
+              />
+              <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+              <p className="text-white text-sm mb-4">{testimonial.text}</p>
             </div>
           </div>
-        </section>
-        </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Desktop View - Animated Columns */}
+    <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {/* First Column */}
+      <div className="space-y-8">
+        <Swiper
+          direction="vertical"
+          modules={[Autoplay]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            reverseDirection: false
+          }}
+          loop={true}
+          speed={1000}
+          slidesPerView={2}
+          spaceBetween={24}
+          className="h-[700px]"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={`col1-${index}`}>
+              <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full mb-4 object-cover"
+                  />
+                  <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+                  <p className="text-white text-sm mb-4">{testimonial.text}</p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* Second Column */}
+      <div className="space-y-8">
+        <Swiper
+          direction="vertical"
+          modules={[Autoplay]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            reverseDirection: true,
+            initialSlide: 2
+          }}
+          loop={true}
+          speed={1000}
+          slidesPerView={2}
+          spaceBetween={24}
+          className="h-[700px]"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={`col2-${index}`}>
+              <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full mb-4 object-cover"
+                  />
+                  <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+                  <p className="text-white text-sm mb-4">{testimonial.text}</p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* Third Column */}
+      <div className="space-y-8">
+        <Swiper
+          direction="vertical"
+          modules={[Autoplay]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            reverseDirection: false,
+            initialSlide: 4
+          }}
+          loop={true}
+          speed={1000}
+          slidesPerView={2}
+          spaceBetween={24}
+          className="h-[700px]"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={`col3-${index}`}>
+              <div className="bg-[#E6A06C] rounded-2xl p-6 transform transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full mb-4 object-cover"
+                  />
+                  <h3 className="text-white font-bold mb-1">{testimonial.name}</h3>
+                  <p className="text-white text-sm mb-4">{testimonial.text}</p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
 
         {/* FAQ Section */}
         <div data-aos="fade-up">
