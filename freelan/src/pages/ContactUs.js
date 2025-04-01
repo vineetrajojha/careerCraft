@@ -1,14 +1,26 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectLoggedInUser } from '../features/auth/authSlice';
 import Footer from '../features/common/Footer';
 import Navbar from '../features/common/Navbar';
 import contactusimage from '../features/common/images/contact-us.svg';
 
 const ContactUs = () => {
+  const user = useSelector(selectLoggedInUser);
+  
+  // Dummy scroll functions to pass to Navbar
+  const scrollToSection = () => {};
+  const scrollToFaqSection = () => {};
+  const scrollToMentorsSection = () => {};
   
   return (
     <div>
-      <Navbar />
+      <Navbar 
+        isLoggedIn={!!user} 
+        scrollToFaqSection={scrollToFaqSection} 
+        scrollToProductsSection={scrollToSection} 
+        scrollToMentorsSection={scrollToMentorsSection} 
+      />
       
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto max-w-6xl bg-[#E1A16D] rounded-[20px] p-8">

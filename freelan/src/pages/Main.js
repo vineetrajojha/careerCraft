@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper components
 import { Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
 import 'swiper/css/bundle'; // Import Swiper styles
@@ -8,7 +8,6 @@ import { FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'r
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 import { selectItems } from '../features/cart/cartSlice';
-import { useNavigate } from 'react-router-dom';
 import ProductSection from './ProductSection';
 
 import MentorsSection from './MentorsSection';
@@ -81,6 +80,7 @@ const Main = () => {
   const user = useSelector(selectLoggedInUser);
   const items = useSelector(selectItems);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -117,7 +117,6 @@ const Main = () => {
   const statsRef = useRef(null);
 
   useEffect(() => {
-
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
     });
@@ -138,6 +137,21 @@ const Main = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // Separate useEffect for handling navigation scrolling
+  useEffect(() => {
+    // Handle navigation state for scrolling to sections
+    if (location.state && location.state.scrollTo) {
+      const { scrollTo } = location.state;
+      if (scrollTo === 'scrollToSection') {
+        scrollToSection();
+      } else if (scrollTo === 'scrollToMentorsSection') {
+        scrollToMentorsSection();
+      } else if (scrollTo === 'scrollToFaqSection') {
+        scrollToFaqSection();
+      }
+    }
+  }, [location]);
 
   return (
     <div className="main-content">

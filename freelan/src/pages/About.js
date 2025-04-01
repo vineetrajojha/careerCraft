@@ -1,128 +1,27 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
 import Footer from '../features/common/Footer';
-import { useLocation } from 'react-router-dom';
-// import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import Navbar from '../features/common/Navbar';
 import about1 from '../features/common/images/about-us.png';
 import about2 from '../features/common/images/about2.png';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 
-export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
-  const user = useSelector(selectLoggedInUser);
-  const isLoggedIn = !!user;
-
-  const scrollToFaqSection = () => {
-    if (location.pathname === '/') {
-      // If we're on the home page, scroll to the FAQ section
-      const faqSection = document.querySelector('.faq-section');
-      if (faqSection) {
-        faqSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      // If we're on another page, navigate to home and scroll to FAQ
-      window.location.href = '/#faq-section';
-    }
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <nav className="bg-white p-4 mx-auto w-full font-outfit">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo Section */}
-        <div className="flex items-center">
-          <div className="-ml-6 h-14 bg-[#F8E5D8] rounded-tr-full rounded-br-full p-4 pl-12 pr-32">
-            <Link to="/">
-              <div className="flex items-center">
-                <img src="/logo1.png" className="h-6 mr-2" alt="Career Craft Icon" />
-              </div>
-            </Link>
-          </div>
-        </div>
-        
-        {/* Navigation Links */}
-        <div className="hidden md:flex items-center -mr-4">
-          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
-              }
-            >
-              About Us
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
-              }
-            >
-              Contact Us
-            </NavLink>
-            <NavLink
-              to="/faq"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-black font-medium px-8 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-8 py-2 font-outfit"
-              }
-            >
-              FAQs
-            </NavLink>
-            <Link
-              to="/campus"
-              className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit"
-            >
-              Career Craft Campus
-            </Link>
-          </div>
-        </div>
-        
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="focus:outline-none text-black">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      
-      {isMenuOpen && (
-        <div className="md:hidden mt-4 space-y-2 flex flex-col bg-[#F8E5D8] rounded-lg p-4 font-outfit">
-          <Link to="/" className="text-black px-3 py-1 hover:text-gray-700">Home</Link>
-          <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
-          <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
-          <Link to="/faq" className="text-black px-3 py-1 hover:text-gray-700">FAQs</Link>
-          <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
-        </div>
-      )}
-    </nav>
-  );
-};
-
 const About = () => {
+  const user = useSelector(selectLoggedInUser);
+  
+  // Dummy scroll functions to pass to Navbar
+  const scrollToSection = () => {};
+  const scrollToFaqSection = () => {};
+  const scrollToMentorsSection = () => {};
+  
   return (
     <div className="bg-white">
-      <Navbar />
+      <Navbar 
+        isLoggedIn={!!user} 
+        scrollToFaqSection={scrollToFaqSection} 
+        scrollToProductsSection={scrollToSection} 
+        scrollToMentorsSection={scrollToMentorsSection} 
+      />
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         {/* About Us Section */}
         <h1 className="text-[#4A4A4A] text-5xl font-bold mb-12 text-center"><span className="text-[#9C4A1A]">About</span> Us</h1>

@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
 // import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,6 +24,8 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const isLoggedIn = Boolean(user);
+  const location = useLocation();
+  const navigate = useNavigate();
   
   // Add this to get cart items
   const items = useSelector(selectItems);
@@ -34,6 +36,25 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
 
   const handleSignOut = () => {
     dispatch(signOutAsync());
+  };
+  
+  // Handle section navigation from any page
+  const handleSectionNavigation = (sectionHandler) => {
+    if (location.pathname === '/') {
+      // If on home page, just scroll to the section
+      sectionHandler();
+    } else {
+      // If on another page, navigate to home and then scroll after the page loads
+      let sectionName;
+      if (sectionHandler === scrollToProductsSection) {
+        sectionName = 'scrollToSection';
+      } else if (sectionHandler === scrollToMentorsSection) {
+        sectionName = 'scrollToMentorsSection';
+      } else if (sectionHandler === scrollToFaqSection) {
+        sectionName = 'scrollToFaqSection';
+      }
+      navigate('/', { state: { scrollTo: sectionName } });
+    }
   };
 
   return (
@@ -64,13 +85,13 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
               Home
             </NavLink>
             <button
-              onClick={scrollToProductsSection}
+              onClick={() => handleSectionNavigation(scrollToProductsSection)}
               className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
             >
               Products
             </button>
             <button
-              onClick={scrollToMentorsSection}
+              onClick={() => handleSectionNavigation(scrollToMentorsSection)}
               className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
             >
               Mentors
@@ -96,7 +117,7 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
               Contact Us
             </NavLink>
             <button
-              onClick={scrollToFaqSection}
+              onClick={() => handleSectionNavigation(scrollToFaqSection)}
               className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
             >
               FAQs
@@ -189,11 +210,11 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
       {isMenuOpen && (
         <div className="md:hidden mt-4 space-y-2 flex flex-col bg-[#F8E5D8] rounded-lg p-4 font-outfit">
           <Link to="/" className="text-black px-3 py-1 hover:text-gray-700">Home</Link>
-          <button onClick={scrollToProductsSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Products</button>
-          <button onClick={scrollToMentorsSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Mentors</button>
+          <button onClick={() => handleSectionNavigation(scrollToProductsSection)} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Products</button>
+          <button onClick={() => handleSectionNavigation(scrollToMentorsSection)} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Mentors</button>
           <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
-          <button onClick={scrollToFaqSection} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
+          <button onClick={() => handleSectionNavigation(scrollToFaqSection)} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
           <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
           
           {isLoggedIn && (
