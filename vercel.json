@@ -7,3 +7,5 @@
       { "src": "/(.*)", "dest": "/freelan/build/$1" }
     ]
   }
+
+//   vercel
