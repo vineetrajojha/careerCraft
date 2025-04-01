@@ -92,7 +92,7 @@ server.use(
 );
 server.use(express.json()); // to parse req.body
 
-server.use('/products2', isAuth(), productsRouter.router);
+server.use('/products2', productsRouter.router);
 // we can also use JWT token for client-only auth
 server.use('/categories', categoriesRouter.router);
 server.use('/brands', brandsRouter.router);
