@@ -47,7 +47,7 @@ export default function AdminProductList() {
   ];
 
   const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState({});
+  const [sort] = useState({});
   // const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [page, setPage] = useState(1);
   const handleFilter = (e, section, option) => {

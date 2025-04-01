@@ -5,7 +5,6 @@ import Navbar from '../features/common/Navbar';
 import contactusimage from '../features/common/images/contact-us.svg';
 
 const ContactUs = () => {
-  const location = useLocation();
   
   return (
     <div>

@@ -61,9 +61,9 @@ export default function UserProfile() {
   };
 
   // Dummy function for FAQ scrolling in Navbar
-  const scrollToFaqSection = () => {
-    navigate('/#faq-section');
-  };
+  // const scrollToFaqSection = () => {
+  //   navigate('/#faq-section');
+  // };
 
   return (
     <>

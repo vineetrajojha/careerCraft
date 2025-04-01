@@ -1,14 +1,13 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   deleteItemFromCartAsync,
   selectCartLoaded,
-  selectCartStatus,
+  // selectCartStatus,
   selectItems,
   updateCartAsync,
 } from './cartSlice';
 import { Link, useNavigate } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
 import Modal from '../common/Modal';
 import { FaShoppingBasket } from 'react-icons/fa';
 
@@ -17,7 +16,6 @@ export default function Cart() {
   const navigate = useNavigate();
 
   const items = useSelector(selectItems);
-  const status = useSelector(selectCartStatus);
   const cartLoaded = useSelector(selectCartLoaded);
   const [openModal, setOpenModal] = useState(null);
   const [redirectedToHome, setRedirectedToHome] = useState(false);

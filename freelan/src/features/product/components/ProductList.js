@@ -15,10 +15,10 @@ import {
 } from '../productSlice';
 // import { Dialog, Disclosure,  Transition } from '@headlessui/react';
 // import { XMarkIcon } from '@heroicons/react/24/outline';
-import {
+// import {
  
-  StarIcon,
-} from '@heroicons/react/20/solid';
+//   StarIcon,
+// } from '@heroicons/react/20/solid';
 import { Link } from 'react-router-dom';
 // import {
  

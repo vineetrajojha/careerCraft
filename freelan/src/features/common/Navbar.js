@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLoggedInUser } from '../auth/authSlice';
 import { Menu, Transition } from '@headlessui/react';
@@ -21,7 +21,6 @@ function classNames(...classes) {
 
 const Navbar = ({ scrollToFaqSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
   const isLoggedIn = Boolean(user);

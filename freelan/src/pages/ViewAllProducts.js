@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaTimes } from 'react-icons/fa';
 import Navbar from '../features/common/Navbar';
 import Footer from '../features/common/Footer';

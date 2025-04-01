@@ -10,7 +10,6 @@ import { fetchProductsByFilters } from "../features/product/productAPI";
 const ProductSection = () => {
   const [products , setProduct] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [expanded, setExpanded] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();

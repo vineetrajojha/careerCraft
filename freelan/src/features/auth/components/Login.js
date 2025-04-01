@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectError, selectLoggedInUser } from '../authSlice';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUserAsync } from '../authSlice';
 import { useForm } from 'react-hook-form';
-import { FaGoogle, FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 export default function Login() {

@@ -1,20 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper components
-import { Navigation, Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
+import { Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
 import 'swiper/css/bundle'; // Import Swiper styles
 import './styles.css'; // Import the CSS file for custom animations
-import { FaShoppingCart, FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
+import { FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 
 import ProductSection from './ProductSection';
-import FaqSection from './FaqSection';
+
 import MentorsSection from './MentorsSection';
 import GallerySection from './GallerySection';
 import Footer from '../features/common/Footer';
 import Navbar from '../features/common/Navbar';
-import newLogo from "../features/common/images/newLogo.png"
+
 
 // AOS LIBRARY for effects
 import AOS from "aos";
