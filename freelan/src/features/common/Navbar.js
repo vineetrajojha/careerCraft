@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
 // import { useLocation } from 'react-router-dom';
@@ -7,6 +7,9 @@ import { selectLoggedInUser } from '../auth/authSlice';
 import { Menu, Transition } from '@headlessui/react';
 import { signOutAsync } from '../auth/authSlice';
 import { selectItems } from '../cart/cartSlice';
+// Import AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // User navigation items for the dropdown menu
 const userNavigation = [
@@ -29,6 +32,14 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
   
   // Add this to get cart items
   const items = useSelector(selectItems);
+  
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,6 +69,7 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
   };
 
   return (
+    <div data-aos="fade-down">
     <nav className="bg-white shadow-sm p-4 w-full font-outfit">
       <div className="flex justify-between items-center w-full">
         {/* Logo Section */}
@@ -250,6 +262,7 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
         </div>
       )}
     </nav>
+    </div>
   );
 };
 

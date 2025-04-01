@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo1 from '../features/common/images/logo1.jpeg'; 
 import logo2 from '../features/common/images/logo2.jpeg';
 import logo3 from '../features/common/images/logo3.jpeg';
@@ -7,10 +7,22 @@ import Navbar from '../features/common/Navbar';
 import Footer from '../features/common/Footer';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
+// Import AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MentorsPage = () => {
   const logos = [logo1, logo2, logo3, logo4];
   const user = useSelector(selectLoggedInUser);
+  
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true,
+    });
+  }, []);
   
   // Dummy scroll functions to pass to Navbar
   const scrollToSection = () => {};
@@ -28,9 +40,9 @@ const MentorsPage = () => {
    
     <div className="bg-gray-100 min-h-screen py-10">
       {/* Header Section */}
-      <div className="max-w-4xl mx-auto text-center px-4">
+      <div className="max-w-4xl mx-auto text-center px-4" data-aos="fade-down">
         <h1 className="md:text-4xl text-2xl font-bold mb-6 text-slate-600 font-roboto underline"> About Our<span className='font-roboto '> Mentors</span> </h1>
-        <p className="md:text-lg text-sm text-gray-700 mb-8 font-serif leading-relaxed text-justify px-4 sm:px-8 lg:px-16">
+        <p className="md:text-lg text-sm text-gray-700 mb-8 font-serif leading-relaxed text-justify px-4 sm:px-8 lg:px-16" data-aos="fade-up" data-aos-delay="100">
   At CareerCraft, our mentors are more than just professionals—they are seasoned industry experts who bring 2 to 15 years of rich, hands-on experience across a variety of domains. They are alumni of some of the most prestigious institutions in India, including IITs, IIMs, and other top-tier universities. Among them, we have individuals who have cracked the highly competitive UPSC Civil Services examination, a testament to their unparalleled knowledge and dedication.  
 
   Our mentors come from diverse sectors such as IT, FMCG, Healthcare, BFSI, and many others, ensuring you gain multidimensional perspectives. Whether it's navigating corporate challenges, excelling in government roles, or mastering industry-specific skills, their real-world insights empower you to craft your own path to success.
@@ -39,19 +51,21 @@ const MentorsPage = () => {
       </div>
 
       {/* Logos Section */}
-      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center px-4">
+      <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-center items-center px-4" data-aos="fade-up" data-aos-delay="200">
       {logos.map((logo, index) => (
           <img
             key={index}
             src={logo}
             alt={`Mentor Logo ${index + 1}`}
             className="w-full h-28 sm:w-full sm:h-24 lg:w-full lg:h-60 object-contain mx-auto"
+            data-aos="zoom-in"
+            data-aos-delay={300 + (index * 100)}
           />
         ))}
       </div>
 
       {/* Footer */}
-      <div className="text-center mt-8">
+      <div className="text-center mt-8" data-aos="fade-up" data-aos-delay="600">
         <p className="text-lg text-gray-700 font-medium">and many more</p>
       </div>
     </div>
