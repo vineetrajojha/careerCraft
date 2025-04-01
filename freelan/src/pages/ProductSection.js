@@ -371,7 +371,7 @@ const ProductSection = () => {
   };
 
   return (
-    <div className="bg-white py-12 sm:py-16 px-4 font-outfit">
+    <div className="bg-[fffff] py-12 sm:py-16 px-4 font-outfit">
       <div className="container mx-auto">
         <h2 className="text-[#9C4A1A] text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 sm:mb-16">
           Our Products

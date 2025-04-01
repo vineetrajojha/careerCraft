@@ -311,8 +311,17 @@ const Main = () => {
 
             
           </div>
+          {/* ISO Certification Banner */}
+                  <div className="text-white text-center mt-14 px-6  max-w-3xl mx-auto font-outfit flex flex-col items-center gap-4">
+                  <FaAward className="text-5xl text-white-500" />
+                  <p className="text-2xl sm:text-3xl font-semibold">
+                    We are now an ISO 9001:2015 certified company
+                  </p>
+                </div>
         </section>
         </div>
+
+         
 
        
         <div data-aos="fade-up">

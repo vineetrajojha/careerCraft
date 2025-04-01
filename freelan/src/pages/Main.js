@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper components
 import { Autoplay } from 'swiper/modules'; // Import Navigation and Autoplay modules
 import 'swiper/css/bundle'; // Import Swiper styles
 import './styles.css'; // Import the CSS file for custom animations
-import { FaUserTie, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
+import { FaUserTie, FaAward, FaGraduationCap, FaHeadset, FaBrain, FaChevronDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { selectLoggedInUser } from '../features/auth/authSlice';
 import { selectItems } from '../features/cart/cartSlice';
@@ -340,10 +340,20 @@ const Main = () => {
                 </div>
               </div>
             </div>
+            
 
             
           </div>
+          {/* ISO Certification Banner */}
+        <div className="text-white text-center mt-14 px-6  max-w-3xl mx-auto font-outfit flex flex-col items-center gap-4">
+        <FaAward className="text-5xl text-white-500" />
+        <p className="text-2xl sm:text-3xl font-semibold">
+          We are now an ISO 9001:2015 certified company
+        </p>
+      </div>
+          
         </section>
+        
         </div>
 
        
