@@ -48,6 +48,8 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
   const handleSignOut = () => {
     dispatch(signOutAsync());
   };
+
+   const [campusHover, setCampusHover] = useState(false);
   
   // Handle section navigation from any page
   const handleSectionNavigation = (sectionHandler) => {
@@ -134,12 +136,13 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
             >
               FAQs
             </button>
-            <Link
-              to="/campus"
-              className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit"
-            >
-              Career Craft Campus
-            </Link>
+            <div
+            className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit cursor-pointer"
+            onMouseEnter={() => setCampusHover(true)}
+            onMouseLeave={() => setCampusHover(false)}
+          >
+            {campusHover ? 'Coming Soon' : 'Career Craft Campus'}
+          </div>
             {isLoggedIn && (
                <>
                <Link

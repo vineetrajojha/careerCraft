@@ -20,10 +20,10 @@ function Footer() {
 
           {/* Middle Section */}
           <div className="space-y-2">
-            <div className="font-medium">
-            <p className="m-2 leading-5">6th floor, A-40 IThum Tower,<br/>Noida Sector-62,<br/>Uttar Pradesh, 201309</p>
-            <p className="m-2">Phone Number: +91-9031539131</p>
-            <p className="m-2">Email: admin@careercraft.site</p>
+            <div className="font-medium ont-outfit">
+            <p className="m-2 leading-5 font-bold font-outfit">6th floor, A-40 IThum Tower,<br/>Noida Sector-62,<br/>Uttar Pradesh, 201309</p><br/>
+            <a href="https://wa.me/919031539131" className="m-2" target="_blank" rel="noopener noreferrer">Phone Number: +91-9031539131</a><br/><br/>
+            <a href="mailto:admin@careercraft.site" className="m-2" target="_blank" rel="noopener noreferrer">Email: admin@careercraft.site</a>
             </div>
           </div>
 
