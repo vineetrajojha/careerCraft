@@ -219,29 +219,6 @@ export default function Login() {
               </div>
             </form>
 
-            <div className="mt-6">
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="bg-white px-2 text-gray-500">or login with</span>
-                </div>
-              </div>
-
-              <div className="mt-6 grid">
-                <div>
-                  <a
-                    href="#"
-                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
-                  >
-                    <span className="sr-only">Login with Google</span>
-                    <FaGoogle className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
             <p className="mt-6 text-center text-sm text-gray-500">
               Don't have an account?{' '}
               <Link
