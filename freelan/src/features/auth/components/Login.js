@@ -201,6 +201,14 @@ export default function Login() {
                     <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
                   )}
                 </div>
+                <div className="flex items-center justify-end mt-2">
+                  <Link
+                    to="/forgot-password"
+                    className="text-sm font-medium text-[#E1A16D] hover:text-[#d89359]"
+                  >
+                    Forgot password?
+                  </Link>
+                </div>
               </div>
 
               {error && (

@@ -1,20 +1,51 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-
-import { selectLoggedInUser, createUserAsync } from '../authSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+
+import { selectLoggedInUser, createUserAsync, selectError } from '../authSlice';
 
 export default function Signup() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
+  const error = useSelector(selectError);
+  const [emailExists, setEmailExists] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm();
 
+  const onSubmit = async (data) => {
+    try {
+      // Instead of checking with login API, we'll handle the error from createUserAsync
+      // If the email exists, the backend will return an error
+      dispatch(createUserAsync(data))
+        .unwrap()
+        .then(() => {
+          // Success - email doesn't exist
+          setEmailExists(false);
+        })
+        .catch((err) => {
+          // Check if error is due to email already existing
+          if (err.message && err.message.includes('email already exists')) {
+            setEmailExists(true);
+            setError('email', {
+              type: 'manual',
+              message: 'Email already exists. Please login instead.',
+            });
+          } else {
+            console.error('Error during signup:', err);
+          }
+        });
+    } catch (error) {
+      console.error('Error during signup:', error);
+    }
+  };
 
   return (
     <>
@@ -42,40 +73,41 @@ export default function Signup() {
           <form
             noValidate
             className="space-y-6"
-            onSubmit={handleSubmit((data) => {
-              dispatch(
-                createUserAsync({
-                  email: data.email,
-                  password: data.password,
-                  addresses: [],
-                  role:'user'
-                })
-              );
-              console.log(data);
-            })}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div>
               <label
                 htmlFor="email"
-                className="block sm:text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium text-gray-700"
               >
                 Email address
               </label>
-              <div className="mt-2">
-              <input
-  id="email"
-  {...register('email', {
-    required: 'Email is required',
-    pattern: {
-      value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
-      message: 'Email is not valid',
-    },
-  })}
-  type="email"
-  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#E1A16D] sm:text-sm sm:leading-6"
-/>
+              <div className="mt-1">
+                <input
+                  id="email"
+                  {...register('email', {
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
+                      message: 'Email is not valid',
+                    },
+                  })}
+                  type="email"
+                  className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-[#E1A16D] focus:outline-none focus:ring-[#E1A16D] sm:text-sm"
+                />
                 {errors.email && (
-                  <p className="text-red-500">{errors.email.message}</p>
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.email.message}
+                  </p>
+                )}
+                {emailExists && (
+                  <p className="mt-2 text-sm text-red-600">
+                    This email is already registered. Please{' '}
+                    <Link to="/login" className="text-[#E1A16D] hover:text-[#d89359]">
+                      login
+                    </Link>{' '}
+                    instead.
+                  </p>
                 )}
               </div>
             </div>
