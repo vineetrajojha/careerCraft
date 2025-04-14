@@ -20,11 +20,18 @@ const initialState = {
 
 export const createUserAsync = createAsyncThunk(
   'user/createUser',
-  async (userData) => {
-    const response = await createUser(userData);
-    // The value we return becomes the `fulfilled` action payload
-    console.log(response)
-    return response.data;
+  async (userData, {rejectWithValue}) => {
+    try {
+      const response = await createUser(userData);
+      if (response.data.message === "User already exists") {
+        throw new Error("email already exists")
+      }
+      // The value we return becomes the `fulfilled` action payload
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  
   }
 );
 

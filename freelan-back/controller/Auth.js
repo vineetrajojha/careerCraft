@@ -5,6 +5,13 @@ const jwt = require('jsonwebtoken');
 
 exports.createUser = async (req, res) => {
   try {
+    // check if user already exists
+    const alreadyUser = await User.findOne({
+      email: req.body.email,  });
+    if (alreadyUser) {  
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
     const salt = crypto.randomBytes(16);
     crypto.pbkdf2(
       req.body.password,
