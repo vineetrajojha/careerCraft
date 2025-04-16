@@ -87,7 +87,7 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
         
         {/* Navigation Links */}
         <div className="hidden md:flex items-center">
-          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-16">
+          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-8">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -129,6 +129,16 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
               }
             >
               Contact Us
+            </NavLink>
+            <NavLink
+              to="/hiring-partners"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-medium px-6 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
+              }
+            >
+              Hiring Partners
             </NavLink>
             <button
               onClick={() => handleSectionNavigation(scrollToFaqSection)}
@@ -229,6 +239,7 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
           <button onClick={() => handleSectionNavigation(scrollToMentorsSection)} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">Mentors</button>
           <Link to="/about" className="text-black px-3 py-1 hover:text-gray-700">About Us</Link>
           <Link to="/contact" className="text-black px-3 py-1 hover:text-gray-700">Contact Us</Link>
+          <Link to="/hiring-partners" className="text-black px-3 py-1 hover:text-gray-700">Hiring Partners</Link>
           <button onClick={() => handleSectionNavigation(scrollToFaqSection)} className="text-black px-3 py-1 hover:text-gray-700 cursor-pointer text-left">FAQs</button>
           <Link to="/campus" className="text-black px-3 py-1 hover:text-gray-700">Career Craft Campus</Link>
           
