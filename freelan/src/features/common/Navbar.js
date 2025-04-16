@@ -72,7 +72,7 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
 
   return (
     <div data-aos="fade-down">
-    <nav className="bg-white shadow-sm p-4 w-full font-outfit">
+    <nav className="bg-white shadow-sm pt-6 w-full font-outfit">
       <div className="flex justify-between items-center w-full">
         {/* Logo Section */}
         <div className="flex items-center">
