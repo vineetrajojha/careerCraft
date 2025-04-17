@@ -19,6 +19,9 @@ export default function Cart() {
   const cartLoaded = useSelector(selectCartLoaded);
   const [openModal, setOpenModal] = useState(null);
   const [redirectedToHome, setRedirectedToHome] = useState(false);
+  const [promoCode, setPromoCode] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [promoError, setPromoError] = useState('');
 
   // Use useEffect for navigation instead of Navigate component
   useEffect(() => {
@@ -51,6 +54,26 @@ export default function Cart() {
   );
   
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
+
+  const handlePromoCode = () => {
+    setPromoError('');
+    switch(promoCode) {
+      case 'CC@05':
+        setDiscount(5);
+        break;
+      case 'CC@10':
+        setDiscount(10);
+        break;
+      case 'CC@15':
+        setDiscount(15);
+        break;
+      default:
+        setPromoError('Invalid promo code');
+        setDiscount(0);
+    }
+  };
+
+  const discountedAmount = totalAmount - (totalAmount * discount / 100);
 
   const handleQuantity = (e, item) => {
     // Fetch and log product name and price
@@ -226,16 +249,40 @@ export default function Cart() {
               >
                 Do you have a Promo Code?
               </label>
-              <input
-                type="text"
-                id="promo-code"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#C65D34] focus:ring-[#C65D34] sm:text-sm"
-                placeholder="Enter promo code"
-              />
+              <div className="mt-1 flex rounded-md shadow-sm">
+                <input
+                  type="text"
+                  id="promo-code"
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  className="block w-full rounded-l-md border-gray-300 focus:border-[#C65D34] focus:ring-[#C65D34] sm:text-sm"
+                  placeholder="Enter promo code"
+                />
+                <button
+                  onClick={handlePromoCode}
+                  className="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm hover:bg-gray-100"
+                >
+                  Apply
+                </button>
+              </div>
+              {promoError && (
+                <p className="mt-1 text-sm text-red-600">{promoError}</p>
+              )}
+              {discount > 0 && (
+                <p className="mt-1 text-sm text-green-600">
+                  {discount}% discount applied!
+                </p>
+              )}
             </div>
+            {discount > 0 && (
+              <div className="flex justify-between my-4 text-base font-medium text-green-600">
+                <p>Discount</p>
+                <p>-{formatPrice(totalAmount * discount / 100)}</p>
+              </div>
+            )}
             <div className="flex justify-between my-4 text-lg font-bold text-gray-900">
               <p>Total</p>
-              <p>{formatPrice(totalAmount)}</p>
+              <p>{formatPrice(discountedAmount)}</p>
             </div>
             <button 
               className="w-full bg-[#C65D34] text-white py-3 rounded-md shadow-sm hover:bg-[#B54D24] transition duration-300"
