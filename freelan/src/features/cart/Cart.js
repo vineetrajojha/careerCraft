@@ -74,6 +74,8 @@ export default function Cart() {
   };
 
   const discountedAmount = totalAmount - (totalAmount * discount / 100);
+  const gstAmount = discountedAmount * 0.18; // 18% GST
+  const finalAmount = discountedAmount + gstAmount;
 
   const handleQuantity = (e, item) => {
     // Fetch and log product name and price
@@ -116,14 +118,27 @@ export default function Cart() {
 
   // Format price correctly
   const formatPrice = (price) => {
+    let numPrice;
     if (typeof price === 'number') {
-      return `₹${price}`;
+      numPrice = price;
+    } else if (typeof price === 'string') {
+      // Try to remove currency symbol and parse
+      const parsed = parseFloat(price.replace(/[^\d.-]/g, ''));
+      if (!isNaN(parsed)) {
+        numPrice = parsed;
+      } else {
+        // If parsing fails, return original string or a default
+        return price; // Or return '₹0.00' or handle as error
+      }
+    } else {
+      // Handle other types or invalid input
+      return '₹0.00'; // Or handle as error
     }
-    // If it's already a string with currency symbol
-    if (typeof price === 'string' && price.includes('₹')) {
-      return price;
-    }
-    return `₹${price}`;
+
+    // Round to 2 decimal places
+    const roundedPrice = numPrice.toFixed(2);
+
+    return `₹${roundedPrice}`;
   };
 
   // If cart is empty, show empty cart UI
@@ -280,9 +295,13 @@ export default function Cart() {
                 <p>-{formatPrice(totalAmount * discount / 100)}</p>
               </div>
             )}
+            <div className="flex justify-between my-4 text-base font-medium text-gray-900">
+              <p>GST (18%)</p>
+              <p>{formatPrice(gstAmount)}</p>
+            </div>
             <div className="flex justify-between my-4 text-lg font-bold text-gray-900">
               <p>Total</p>
-              <p>{formatPrice(discountedAmount)}</p>
+              <p>{formatPrice(finalAmount)}</p>
             </div>
             <button 
               className="w-full bg-[#C65D34] text-white py-3 rounded-md shadow-sm hover:bg-[#B54D24] transition duration-300"

@@ -169,20 +169,32 @@ const ViewAllProducts = () => {
                     {product.description}
                   </p>
 
-                  <div className="flex items-center justify-between">
-                    <button
-                      className="bg-[#C65D34] text-white px-4 sm:px-6 lg:px-8 py-2 rounded-full text-sm sm:text-base hover:bg-[#B54D24] transition duration-300"
-                      onClick={(e) => handleBuyNow(e, product)}
-                    >
-                      Buy now
-                    </button>
-                    <button
-                      className="text-white p-2 rounded-full hover:bg-[#C65D34] hover:text-yellow-200 transition duration-300 flex items-center justify-center"
-                      onClick={(e) => handleAddToCart(e, product)}
-                      aria-label="Add to cart"
-                    >
-                      <FaShoppingCart size={20} className="sm:w-6 sm:h-6" />
-                    </button>
+                  <div className="flex flex-col space-y-3">
+                    <div className="flex items-center gap-2">
+                      {product.price && (
+                        <span className="text-sm text-gray-200 line-through">
+                          ₹{product.price}
+                        </span>
+                      )}
+                      <span className="text-xl font-bold text-white">
+                        ₹{product.discountPrice || product.price}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <button
+                        className="bg-[#C65D34] text-white px-4 sm:px-6 lg:px-8 py-2 rounded-full text-sm sm:text-base hover:bg-[#B54D24] transition duration-300"
+                        onClick={(e) => handleBuyNow(e, product)}
+                      >
+                        Buy now
+                      </button>
+                      <button
+                        className="text-white p-2 rounded-full hover:bg-[#C65D34] hover:text-yellow-200 transition duration-300 flex items-center justify-center"
+                        onClick={(e) => handleAddToCart(e, product)}
+                        aria-label="Add to cart"
+                      >
+                        <FaShoppingCart size={20} className="sm:w-6 sm:h-6" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -236,6 +248,14 @@ const ViewAllProducts = () => {
                     <h3 className="text-2xl font-bold text-[#9C4A1A] mb-4">
                       Product Details:
                     </h3>
+                    {selectedProduct.numberOfSessions && (
+                      <div className="mb-4 flex items-start">
+                        <span className="text-[#C65D34] mr-2">•</span>
+                        <span className="text-gray-700">
+                          There will be {selectedProduct.numberOfSessions} Sessions in this Course.
+                        </span>
+                      </div>
+                    )}
                     <ul className="space-y-3">
                       {selectedProduct.productDetails?.map((detail, index) => (
                         <li key={index} className="flex items-start">

@@ -87,26 +87,26 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
         
         {/* Navigation Links */}
         <div className="hidden md:flex items-center">
-          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-8">
+          <div className="bg-[#F8E5D8] h-14 rounded-tl-full rounded-bl-full flex items-center p-2 pl-8 space-x-4">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-6 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
+                  ? "text-black font-medium px-4 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-4 py-2 font-outfit"
               }
             >
               Home
             </NavLink>
             <button
               onClick={() => handleSectionNavigation(scrollToProductsSection)}
-              className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
+              className="text-black hover:text-gray-700 px-4 py-2 cursor-pointer font-outfit"
             >
               Products
             </button>
             <button
               onClick={() => handleSectionNavigation(scrollToMentorsSection)}
-              className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
+              className="text-black hover:text-gray-700 px-4 py-2 cursor-pointer font-outfit"
             >
               Mentors
             </button>
@@ -114,8 +114,8 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
               to="/about"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-6 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
+                  ? "text-black font-medium px-4 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-4 py-2 font-outfit"
               }
             >
               About Us
@@ -124,8 +124,8 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
               to="/contact"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-6 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
+                  ? "text-black font-medium px-4 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-4 py-2 font-outfit"
               }
             >
               Contact Us
@@ -134,25 +134,25 @@ const Navbar = ({ scrollToFaqSection, scrollToProductsSection, scrollToMentorsSe
               to="/hiring-partners"
               className={({ isActive }) =>
                 isActive
-                  ? "text-black font-medium px-6 py-2 font-outfit"
-                  : "text-black hover:text-gray-700 px-6 py-2 font-outfit"
+                  ? "text-black font-medium px-4 py-2 font-outfit"
+                  : "text-black hover:text-gray-700 px-4 py-2 font-outfit"
               }
             >
               Hiring Partners
             </NavLink>
             <button
               onClick={() => handleSectionNavigation(scrollToFaqSection)}
-              className="text-black hover:text-gray-700 px-6 py-2 cursor-pointer font-outfit"
+              className="text-black hover:text-gray-700 px-4 py-2 cursor-pointer font-outfit"
             >
               FAQs
             </button>
             <div
-            className="bg-[#E67E22] text-white px-6 py-2 rounded-tr-[25px] rounded-bl-[25px] hover:bg-[#d67118] transition-colors duration-300 font-outfit cursor-pointer"
-            onMouseEnter={() => setCampusHover(true)}
-            onMouseLeave={() => setCampusHover(false)}
-          >
-            {campusHover ? 'Coming Soon' : 'Career Craft Campus'}
-          </div>
+              className="bg-[#E67E22] text-white px-4 py-1.5 text-sm rounded-tr-[20px] rounded-bl-[20px] hover:bg-[#d67118] transition-colors duration-300 font-outfit cursor-pointer"
+              onMouseEnter={() => setCampusHover(true)}
+              onMouseLeave={() => setCampusHover(false)}
+            >
+              {campusHover ? 'Coming Soon' : 'Career Craft Campus'}
+            </div>
             {isLoggedIn && (
                <>
                <Link

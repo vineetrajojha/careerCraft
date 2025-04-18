@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -16,14 +16,29 @@ function Footer() {
                 Sign Up Now
               </button>
             </Link>
+            {/* WhatsApp Chat Link */}
+            <a 
+              href="https://api.whatsapp.com/send/?phone=%2B919031539131&text&type=phone_number&app_absent=0" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="fixed bottom-4 right-4 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center gap-2 hover:scale-110"
+            >
+              <FaWhatsapp size={24} />
+              <span className="hidden md:inline">Chat with us</span>
+            </a>
           </div>
 
           {/* Middle Section */}
           <div className="space-y-2">
             <div className="font-medium ont-outfit">
             <p className="m-2 leading-5 font-bold font-outfit">6th floor, A-40 IThum Tower,<br/>Noida Sector-62,<br/>Uttar Pradesh, 201309</p><br/>
-            <a href="https://wa.me/919031539131" className="m-2" target="_blank" rel="noopener noreferrer">Phone Number: +91-9031539131</a><br/><br/>
-            <a href="mailto:admin@careercraft.site" className="m-2" target="_blank" rel="noopener noreferrer">Email: admin@careercraft.site</a>
+            <div className="flex items-center m-2">
+              <FaWhatsapp className="text-green-500 mr-2" size={20} />
+              <a href="https://wa.me/919031539131" target="_blank" rel="noopener noreferrer" className="hover:text-[#9C4A1A] transition-colors duration-300">
+                +91-9031539131
+              </a>
+            </div>
+            <a href="mailto:admin@careercraft.site" className="m-2 hover:text-[#9C4A1A] transition-colors duration-300" target="_blank" rel="noopener noreferrer">Email: admin@careercraft.site</a>
             </div>
           </div>
 
