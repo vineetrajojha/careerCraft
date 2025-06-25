@@ -1,49 +1,81 @@
+# CareerCraft E-commerce Platform
 
-# CoderDost MERN Stack E-commerce Project - Frontend Repository
+CareerCraft is a modern e-commerce web application for professional and educational products, built with React and Redux Toolkit. This project is organized for scalability and maintainability, with a clear separation of features, pages, assets, and data.
 
-🔥🔥 WATCH HERE >> [Project Video](https://youtu.be/LH-S5v-D3hA)
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Available Scripts](#available-scripts)
+- [Environment Variables](#environment-variables)
+- [Best Practices](#best-practices)
+- [Learn More](#learn-more)
 
-MERN E-Commerce (in Hindi) with Admin Panel, Redux Toolkit, Stripe Payment, Cloud Deployment, Email Invoice, and many features (complete features given below in Description )
+## Project Structure
+```
+freelan/
+├── public/                     # Static files and images
+│   ├── products/               # Product images
+│   ├── partners-logos/         # Partner logos
+│   └── ...                     # Other static assets (logos, icons, etc.)
+├── src/
+│   ├── app/                    # App-wide store, API, and constants
+│   ├── assest/                 # Images and graphics for the app
+│   ├── features/               # Feature-based modules (Redux slices, components)
+│   │   ├── admin/              # Admin panel features
+│   │   ├── auth/               # Authentication (login, signup, etc.)
+│   │   ├── cart/               # Cart management
+│   │   ├── common/             # Common UI components (Navbar, Footer, Modal, etc.)
+│   │   ├── counter/            # Example counter feature
+│   │   ├── navbar/             # Navbar and related styles
+│   │   ├── order/              # Order management
+│   │   ├── product/            # Product listing and details
+│   │   └── user/               # User profile and orders
+│   ├── pages/                  # Page-level components (Home, About, Contact, etc.)
+│   ├── App.js, App.css         # Main app component and styles
+│   ├── index.js, index.css     # Entry point and global styles
+│   └── ...                     # Other configs and helpers
+├── data.json                   # Sample data for development
+├── tailwind.config.js          # Tailwind CSS configuration
+├── .gitignore                  # Files/folders to ignore in git
+├── package.json                # Project metadata and scripts
+├── package-lock.json           # Dependency lock file
+├── README.md                   # Project documentation
+└── vercel.json                 # Vercel deployment config
+```
 
-🔥 Code Repositories:
-- React [frontend] -  https://github.com/coderdost/MERN-ecommerce-Frontend
-- Node [backend] - https://github.com/coderdost/MERN-ecommerce-backend
+## Available Scripts
+In the `freelan` directory, you can run:
 
-🔥Related MasterClasses:
-- React [ 10 Hours ] - https://youtu.be/6l8RWV8D-Yo 
-- NodeJS / Express/ Mongoose [ 12 hours ] - https://youtu.be/ChVE-JbtYbM
-- Redux [ 7 hours ] - https://youtu.be/1zCNdVhdvHE
+### `npm start`
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
 
-🔥 Related Videos :
-- Multer Middleware (for file upload) -  https://youtu.be/qfN6c5FEAQQ
-- Mongoose populate - https://youtu.be/VuSt5-AwL8Y
-- Passport  JS Authentication - https://youtu.be/U-S3rgG8hBE
-- JWT Auth  is  from  - Node MasterClass (Link above)
-- Vercel deployment details  - Node MasterClass (Link above)
-- React Router Crash Course: https://bit.ly/36YfO2i
+### `npm run build`
+Builds the app for production to the `build` folder.
 
-🔥 Features :
-- Basic E-commerce Features- Product lists, Product Details, Cart, Checkout 
-- Secure Card Payments / Cash payments
-- Admin Panel - Add/Edit Orders. Add/Edit Products
-- Sorting, Filtering, and Pagination queries using Mongoose
-- Authentication with Passport JS strategies
-- Order Emails, Reset Password Emails
-- User Profile and user orders
+### `npm test`
+Launches the test runner in interactive watch mode.
 
-🔥 Technical Details :
-- React 18 with Tailwind CSS
-- Redux Toolkit with Async Thunk
-- React Router v6
-- JSON-server for front-end testing
-- MongoDB for Database
-- Mongoose v7 as ODM
-- REST API using Express
-- Authentication using Passport JS
-- API Authentication using Passport JWT
-- MongoDB Atlas cloud database
-- Vercel Server deployment
-- Email using Nodemailer - using GMail SMTP system
-- Payments using Stripe - PaymentIntent based custom flow
+### `npm run eject`
+Removes the single build dependency from your project (irreversible).
+
+## Environment Variables
+- Store sensitive keys and configuration in a `.env` file at the project root.
+- Example:
+  ```env
+  REACT_APP_API_URL=https://your-api-url.com
+  ```
+- **Note:** `.env` files are excluded from git via `.gitignore`.
+
+## Best Practices
+- Do not commit sensitive data or credentials.
+- Do not commit `node_modules`, build output, or IDE settings.
+- Organize assets and components for clarity and scalability.
+- Use Redux Toolkit for state management and maintain feature separation.
+- Use environment variables for configuration.
+
+## Learn More
+- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React Documentation](https://reactjs.org/)
+- [Redux Toolkit Documentation](https://redux-toolkit.js.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs/installation)
 
 
